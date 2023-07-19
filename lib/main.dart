@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nexo_app/core/global/app_theme.dart';
-import 'package:nexo_app/features/splash/presentation/views/splash_view.dart';
 
+import 'core/global/app_theme.dart';
 import 'core/network/cache_helper.dart';
 import 'core/utils/size_config.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

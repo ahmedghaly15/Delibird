@@ -1,3 +1,3 @@
-# nexo_app
+# Nexo-App
 
-A new Flutter project.
+README coming soon
