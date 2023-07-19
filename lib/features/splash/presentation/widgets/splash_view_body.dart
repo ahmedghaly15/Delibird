@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nexo_app/core/global/app_navigator.dart';
-import 'package:nexo_app/core/network/cache_helper.dart';
+import 'package:nexo_app/core/network/local/cache_helper.dart';
 import 'package:nexo_app/features/auth/presentation/views/auth_view.dart';
 import 'package:nexo_app/features/home/presentation/views/home_view.dart';
 
