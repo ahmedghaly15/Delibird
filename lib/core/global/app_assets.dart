@@ -1,8 +1,8 @@
 class AppAssets {
-  static const String appICon = 'assets/app_icon/icon.png';
+  static const String appIcon = 'assets/app_icon/icon.png';
   static const String facebookIcon = 'assets/auth_icons/f.png';
   static const String googleIcon = 'assets/auth_icons/g.png';
-  static const String appIcon = 'assets/auth_icons/ios.png';
+  static const String ios = 'assets/auth_icons/ios.png';
   static const String acerPredator = 'assets/images/acerPredator.png';
   static const String helios = 'assets/images/helios.png';
   static const String laptop1 = 'assets/images/laptop1.png';

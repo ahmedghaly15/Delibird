@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validating,
     this.onSubmit,
     this.onEditingComplete,
+    this.onChanged,
   }) : super(key: key);
 
   final FocusNode? focusNode;
@@ -29,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final void Function(String)? onSubmit;
   final void Function()? onEditingComplete;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,7 @@ class CustomTextFormField extends StatelessWidget {
         validator: validating,
         onFieldSubmitted: onSubmit,
         onEditingComplete: onEditingComplete,
+        onChanged: onChanged,
       ),
     );
   }

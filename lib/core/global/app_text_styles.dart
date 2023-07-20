@@ -13,6 +13,12 @@ class AppTextStyles {
     color: Colors.white,
   );
 
+  static const TextStyle OrStyle = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.kOrDividerColor,
+  );
+
   static const TextStyle textButtonStyle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,

@@ -65,7 +65,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           top: 0,
           child: Center(
             child: Image.asset(
-              AppAssets.appICon,
+              AppAssets.appIcon,
               fit: BoxFit.cover,
               width: SizeConfig.screenWidth! * 0.5,
             ),
