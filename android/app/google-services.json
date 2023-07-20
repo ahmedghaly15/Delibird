@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "912465144068",
+    "project_id": "nexo-app-132da",
+    "storage_bucket": "nexo-app-132da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912465144068:android:ce50a774d67b3a832c4851",
+        "android_client_info": {
+          "package_name": "com.example.nexo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912465144068-muo18t2gshkfvkht8j5o4729fg6qemdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWzyQmhgbgk1H3NNxgTI7zowiPx6F3qlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912465144068-muo18t2gshkfvkht8j5o4729fg6qemdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

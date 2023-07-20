@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>912465144068-n59t3all6bj54htteqj5gttulo1q4cv3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.912465144068-n59t3all6bj54htteqj5gttulo1q4cv3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBg08FHzwmEdmVQmIApJzFdz96PSLUHBDU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>912465144068</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.nexoApp.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>nexo-app-132da</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nexo-app-132da.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:912465144068:ios:17f998ad4e2676042c4851</string>
+</dict>
+</plist>

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AuthView extends StatelessWidget {
-  const AuthView({Key? key}) : super(key: key);
+class LoginView extends StatelessWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Auth View"),
+        title: const Text("Login view"),
       ),
     );
   }

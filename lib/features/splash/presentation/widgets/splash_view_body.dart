@@ -2,16 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nexo_app/core/global/app_navigator.dart';
-import 'package:nexo_app/core/network/local/cache_helper.dart';
-import 'package:nexo_app/features/auth/presentation/views/auth_view.dart';
-import 'package:nexo_app/features/home/presentation/views/home_view.dart';
 
-import '../../../../core/utils/helper.dart';
 import '/core/global/app_assets.dart';
 import '/core/global/app_colors.dart';
+import '/core/global/app_navigator.dart';
+import '/core/network/local/cache_helper.dart';
+import '/core/utils/helper.dart';
 import '/core/utils/size_config.dart';
 import '/core/utils/splash_controller.dart';
+import '/features/auth/presentation/views/log_in_view.dart';
+import '/features/home/presentation/views/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -135,7 +135,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (Helper.uId != null) {
         AppNavigator.navigateAndFinishAll(screen: const HomeView());
       } else {
-        AppNavigator.navigateAndFinish(screen: const AuthView());
+        AppNavigator.navigateAndFinish(screen: const LoginView());
       }
     });
   }
