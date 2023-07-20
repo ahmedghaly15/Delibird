@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nexo_app/features/home/presentation/views/home_view.dart';
 
 import '../../../../core/global/app_colors.dart';
+import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -68,7 +70,13 @@ class LoginForm extends StatelessWidget {
                 keyboardType: TextInputType.phone,
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.035),
-              CustomButton(onPressed: () {}, text: "Login"),
+              CustomButton(
+                onPressed: () {
+                  print("object");
+                  AppNavigator.navigateTo(screen: () => const HomeView());
+                },
+                text: "Login",
+              ),
               SizedBox(height: SizeConfig.screenHeight! * 0.025),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

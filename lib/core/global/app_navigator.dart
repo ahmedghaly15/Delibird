@@ -3,14 +3,16 @@ import 'package:get/get.dart';
 
 class AppNavigator {
   static void navigateTo({
-    required Widget screen,
-    Transition? transition,
+    required Widget Function() screen,
+    Transition? transition = Transition.rightToLeft,
+    Duration? duration = const Duration(milliseconds: 400),
+    Curve? curve = Curves.ease,
   }) {
     Get.to(
-      () => screen,
-      transition: Transition.rightToLeft,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeIn,
+      screen,
+      transition: transition,
+      duration: duration,
+      curve: curve,
     );
   }
 
@@ -19,26 +21,30 @@ class AppNavigator {
   }
 
   static void navigateAndFinish({
-    required Widget screen,
-    Transition? transition,
+    required Widget Function() screen,
+    Transition? transition = Transition.rightToLeftWithFade,
+    Duration? duration = const Duration(milliseconds: 750),
+    Curve? curve = Curves.ease,
   }) {
     Get.off(
-      () => screen,
-      transition: Transition.rightToLeftWithFade,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeIn,
+      screen,
+      transition: transition,
+      duration: duration,
+      curve: curve,
     );
   }
 
   static void navigateAndFinishAll({
-    required Widget screen,
-    Transition? transition,
+    required Widget Function() screen,
+    Transition? transition = Transition.rightToLeft,
+    Duration? duration = const Duration(milliseconds: 750),
+    Curve? curve = Curves.ease,
   }) {
     Get.offAll(
-      () => screen,
-      transition: Transition.rightToLeft,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeIn,
+      screen,
+      transition: transition,
+      duration: duration,
+      curve: curve,
     );
   }
 }

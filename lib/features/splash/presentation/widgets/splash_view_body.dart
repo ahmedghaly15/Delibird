@@ -133,9 +133,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       Helper.uId = CacheHelper.getStringData(key: 'uId');
 
       if (Helper.uId != null) {
-        AppNavigator.navigateAndFinishAll(screen: const HomeView());
+        AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
       } else {
-        AppNavigator.navigateAndFinish(screen: const LoginView());
+        AppNavigator.navigateAndFinish(screen: () => const LoginView());
       }
     });
   }
