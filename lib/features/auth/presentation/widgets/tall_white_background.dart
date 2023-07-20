@@ -7,7 +7,10 @@ import 'or_divider.dart';
 import 'social_auth_icon.dart';
 
 class TallWhiteBackground extends StatelessWidget {
-  const TallWhiteBackground({Key? key}) : super(key: key);
+  const TallWhiteBackground({Key? key, required this.isLoginView})
+      : super(key: key);
+
+  final bool isLoginView;
 
   @override
   Widget build(BuildContext context) {
@@ -25,33 +28,35 @@ class TallWhiteBackground extends StatelessWidget {
             topLeft: Radius.circular(60.0),
           ),
         ),
-        child: Container(
-          margin: EdgeInsets.only(top: SizeConfig.screenHeight! * 0.3),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const OrDivider(),
-                  SizedBox(width: SizeConfig.screenWidth! * 0.02),
-                  const Text("OR", style: AppTextStyles.OrStyle),
-                  SizedBox(width: SizeConfig.screenWidth! * 0.02),
-                  const OrDivider(),
-                ],
-              ),
-              SizedBox(height: SizeConfig.screenHeight! * 0.07),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SocialAuthIcon(image: AppAssets.facebookIcon),
-                  SocialAuthIcon(image: AppAssets.ios),
-                  SocialAuthIcon(image: AppAssets.googleIcon),
-                ],
-              ),
-            ],
-          ),
-        ),
+        child: isLoginView
+            ? Container(
+                margin: EdgeInsets.only(top: SizeConfig.screenHeight! * 0.3),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const OrDivider(),
+                        SizedBox(width: SizeConfig.screenWidth! * 0.02),
+                        const Text("OR", style: AppTextStyles.OrStyle),
+                        SizedBox(width: SizeConfig.screenWidth! * 0.02),
+                        const OrDivider(),
+                      ],
+                    ),
+                    SizedBox(height: SizeConfig.screenHeight! * 0.07),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SocialAuthIcon(image: AppAssets.facebookIcon),
+                        SocialAuthIcon(image: AppAssets.ios),
+                        SocialAuthIcon(image: AppAssets.googleIcon),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            : Container(),
       ),
     );
   }

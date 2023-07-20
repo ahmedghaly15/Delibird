@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '/core/global/app_assets.dart';
-import '/core/utils/size_config.dart';
-import 'log_in_form.dart';
+import '../../../../core/global/app_assets.dart';
+import '../../../../core/utils/size_config.dart';
+import '/features/auth/presentation/widgets/sign_up_form.dart';
 import 'tall_white_background.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({Key? key}) : super(key: key);
+class SignUpViewBody extends StatelessWidget {
+  const SignUpViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class LoginViewBody extends StatelessWidget {
             height: SizeConfig.screenHeight! * 0.4,
           ),
         ),
-        const TallWhiteBackground(isLoginView: true),
-        const LoginForm(),
+        const TallWhiteBackground(isLoginView: false),
+        const SignUpForm(),
       ],
     );
   }

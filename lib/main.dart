@@ -27,6 +27,7 @@ class NexoApp extends StatelessWidget {
   const NexoApp({Key? key}) : super(key: key);
 
   // TODO: remember to look at Responsive Class on Zahraa's GitHub
+  // TODO: Add validating, onEditingComplete, and any other function to InoutFields in AuthView
 
   @override
   Widget build(BuildContext context) {

@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     required this.textCapitalization,
     required this.keyboardType,
+    this.suffixIcon,
     this.focusNode,
     this.hintStyle = AppTextStyles.hintStyle,
     this.obscure,
@@ -23,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final String hint;
   final TextStyle? hintStyle;
   final bool? obscure;
-
+  final Widget? suffixIcon;
   final TextEditingController controller;
   final TextCapitalization textCapitalization;
   final String? Function(String?)? validating;
@@ -53,6 +54,8 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         focusNode: focusNode,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
+          suffixIconColor: AppColors.kPrimaryColor,
           hintText: hint,
           hintStyle: hintStyle,
           contentPadding: const EdgeInsets.all(16),
