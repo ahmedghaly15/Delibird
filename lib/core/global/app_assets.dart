@@ -14,4 +14,5 @@ class AppAssets {
   static const String predatorHelios = 'assets/images/predator-helios.png';
   static const String razerLogo = 'assets/images/Razer-Logo.png';
   static const String vectorTrophy = 'assets/images/vector-trophy.png';
+  static const String city = 'assets/images/city.jpg';
 }
