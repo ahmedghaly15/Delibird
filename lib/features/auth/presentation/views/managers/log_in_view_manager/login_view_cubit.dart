@@ -13,6 +13,8 @@ class LoginViewCubitCubit extends Cubit<LoginViewCubitStates> {
 
   LoginViewRepo loginViewRepo;
 
+  bool passVisibility = true;
+
   void userLogin({
     required String email,
     required String password,
@@ -45,5 +47,10 @@ class LoginViewCubitCubit extends Cubit<LoginViewCubitStates> {
     }).catchError((error) {
       emit(SignInWithGoogleErrorState(error.toString()));
     });
+  }
+
+  void switchPassVisibility() {
+    passVisibility = !passVisibility;
+    emit(SwitchPassVisibleState());
   }
 }

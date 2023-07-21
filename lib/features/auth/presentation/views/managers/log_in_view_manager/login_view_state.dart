@@ -25,3 +25,5 @@ class SignInWithGoogleErrorState extends LoginViewCubitStates {
   final String error;
   SignInWithGoogleErrorState(this.error);
 }
+
+class SwitchPassVisibleState extends LoginViewCubitStates {}
