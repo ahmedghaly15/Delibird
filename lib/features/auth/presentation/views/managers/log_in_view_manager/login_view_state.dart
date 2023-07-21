@@ -1,5 +1,3 @@
-part of 'login_view_cubit_cubit.dart';
-
 abstract class LoginViewCubitStates {}
 
 class LoginViewCubitInitialState extends LoginViewCubitStates {}

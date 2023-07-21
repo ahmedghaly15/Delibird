@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/core/network/local/cache_helper.dart';
 import '/features/auth/domain/log_in_view_repo.dart';
-part 'login_view_cubit_state.dart';
+import 'login_view_state.dart';
 
 class LoginViewCubitCubit extends Cubit<LoginViewCubitStates> {
   LoginViewCubitCubit(this.loginViewRepo) : super(LoginViewCubitInitialState());
