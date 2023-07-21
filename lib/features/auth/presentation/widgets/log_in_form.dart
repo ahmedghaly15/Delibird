@@ -17,8 +17,12 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey();
+
     final TextEditingController passController = TextEditingController();
-    final TextEditingController phoneController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+
+    final FocusNode emailFocusNode = FocusNode();
+    final FocusNode passFocusNode = FocusNode();
 
     return Positioned(
       right: 0,
@@ -58,18 +62,30 @@ class LoginForm extends StatelessWidget {
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.045),
               CustomTextFormField(
-                hint: "Enter your Phone Number",
-                controller: phoneController,
+                hint: "Enter your Email",
+                controller: emailController,
+                focusNode: emailFocusNode,
                 textCapitalization: TextCapitalization.none,
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.emailAddress,
+                validating: (String? value) {
+                  if (value!.isEmpty) return "Email can't be blank";
+                  return null;
+                },
+                onEditingComplete: () =>
+                    FocusScope.of(context).requestFocus(passFocusNode),
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.015),
               CustomTextFormField(
                 hint: "Enter your Password",
                 controller: passController,
+                focusNode: passFocusNode,
                 textCapitalization: TextCapitalization.none,
-                keyboardType: TextInputType.name,
+                keyboardType: TextInputType.visiblePassword,
                 obscure: true,
+                validating: (String? value) {
+                  if (value!.isEmpty) return "Enter your Password";
+                  return null;
+                },
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.035),
               CustomButton(
