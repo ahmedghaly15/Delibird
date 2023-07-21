@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'core/global/app_theme.dart';
 import 'core/network/local/cache_helper.dart';
 import 'core/utils/firebase_options.dart';
+import 'core/utils/service_locator.dart';
 import 'core/utils/size_config.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 
@@ -16,25 +17,36 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  ServiceLocator().setupServiceLocators();
+
   setSystemUIOverlayStyle();
 
   await CacheHelper.initSharedPref();
 
-  runApp(const NexoApp());
+  runApp(const DelibirdApp());
 }
 
-class NexoApp extends StatelessWidget {
-  const NexoApp({Key? key}) : super(key: key);
+class DelibirdApp extends StatelessWidget {
+  const DelibirdApp({Key? key}) : super(key: key);
+
+  /*
+  
+  To Sign Out Use This:
+
+  => await FirebaseAuth.instance.signOut();
+  
+   */
 
   // TODO: remember to look at Responsive Class on Zahraa's GitHub
   // TODO: Add validating, onEditingComplete, and any other function to InoutFields in AuthView
+  // TODO: Login with email and password & verify with phone number when the user creating a new account
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Nexo-App',
+      title: 'Delibird-App',
       theme: AppTheme.appTheme(),
       home: const SplashView(),
     );
