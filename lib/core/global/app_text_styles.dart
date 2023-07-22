@@ -13,6 +13,12 @@ class AppTextStyles {
     color: Colors.white,
   );
 
+  static const TextStyle snackBarTitleTextStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
+
   static const TextStyle OrStyle = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w400,
