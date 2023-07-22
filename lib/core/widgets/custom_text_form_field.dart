@@ -61,7 +61,8 @@ class CustomTextFormField extends StatelessWidget {
           contentPadding: const EdgeInsets.all(16),
           enabledBorder: buildOutlineInputBorder(Colors.white, 0),
           focusedBorder: buildOutlineInputBorder(AppColors.kPrimaryColor, 2),
-          errorBorder: buildOutlineInputBorder(Colors.red, 2),
+          errorBorder: buildOutlineInputBorder(Colors.white, 0),
+          border: InputBorder.none,
         ),
         style: AppTextStyles.hintStyle.copyWith(
           color: Colors.black,
