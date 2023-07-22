@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/global/app_assets.dart';
 import '../../../../core/utils/size_config.dart';
-import '/features/auth/presentation/widgets/sign_up_form.dart';
+import 'sign_up_container.dart';
 import 'tall_white_background.dart';
 
 class SignUpViewBody extends StatelessWidget {
@@ -23,7 +23,7 @@ class SignUpViewBody extends StatelessWidget {
           ),
         ),
         const TallWhiteBackground(isLoginView: false),
-        const SignUpForm(),
+        const SignUpContainer(),
       ],
     );
   }

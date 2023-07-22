@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../views/managers/log_in_view_manager/login_view_cubit.dart';
 import '/core/global/app_assets.dart';
 import '/core/global/app_text_styles.dart';
 import '/core/utils/size_config.dart';
@@ -7,10 +8,14 @@ import 'or_divider.dart';
 import 'social_auth_icon.dart';
 
 class TallWhiteBackground extends StatelessWidget {
-  const TallWhiteBackground({Key? key, required this.isLoginView})
-      : super(key: key);
+  const TallWhiteBackground({
+    Key? key,
+    required this.isLoginView,
+    this.loginViewCubit,
+  }) : super(key: key);
 
   final bool isLoginView;
+  final LoginViewCubit? loginViewCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +50,15 @@ class TallWhiteBackground extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: SizeConfig.screenHeight! * 0.07),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        SocialAuthIcon(image: AppAssets.facebookIcon),
-                        SocialAuthIcon(image: AppAssets.ios),
-                        SocialAuthIcon(image: AppAssets.googleIcon),
+                        const SocialAuthIcon(image: AppAssets.facebookIcon),
+                        const SocialAuthIcon(image: AppAssets.ios),
+                        SocialAuthIcon(
+                          image: AppAssets.googleIcon,
+                          onTap: loginViewCubit!.signInWithGoogle,
+                        ),
                       ],
                     ),
                   ],
