@@ -1,29 +1,36 @@
-abstract class LoginViewCubitStates {}
+abstract class LoginViewStates {}
 
-class LoginViewCubitInitialState extends LoginViewCubitStates {}
+class LoginViewCubitInitialState extends LoginViewStates {}
 
-class LoginLoadingState extends LoginViewCubitStates {}
+class LoginLoadingState extends LoginViewStates {}
 
-class LoginSuccessState extends LoginViewCubitStates {
+class LoginSuccessState extends LoginViewStates {
   final String uId;
   LoginSuccessState(this.uId);
 }
 
-class LoginErrorState extends LoginViewCubitStates {
+class LoginErrorState extends LoginViewStates {
   final String error;
   LoginErrorState(this.error);
 }
 
-class SignInWithGoogleLoadingState extends LoginViewCubitStates {}
+class SignInWithGoogleLoadingState extends LoginViewStates {}
 
-class SignInWithGoogleSuccessState extends LoginViewCubitStates {
+class SignInWithGoogleSuccessState extends LoginViewStates {
   final String uId;
   SignInWithGoogleSuccessState(this.uId);
 }
 
-class SignInWithGoogleErrorState extends LoginViewCubitStates {
+class SignInWithGoogleErrorState extends LoginViewStates {
   final String error;
   SignInWithGoogleErrorState(this.error);
 }
 
-class SwitchPassVisibleState extends LoginViewCubitStates {}
+class FirestoreSaveUserSuccessState extends LoginViewStates {}
+
+class FirestoreSaveUserErrorState extends LoginViewStates {
+  final String error;
+  FirestoreSaveUserErrorState(this.error);
+}
+
+class SwitchPassVisibleState extends LoginViewStates {}

@@ -6,10 +6,10 @@ import '/core/network/local/cache_helper.dart';
 import '/features/auth/domain/log_in_view_repo.dart';
 import 'login_view_state.dart';
 
-class LoginViewCubitCubit extends Cubit<LoginViewCubitStates> {
-  LoginViewCubitCubit(this.loginViewRepo) : super(LoginViewCubitInitialState());
+class LoginViewCubit extends Cubit<LoginViewStates> {
+  LoginViewCubit(this.loginViewRepo) : super(LoginViewCubitInitialState());
 
-  static LoginViewCubitCubit getObject(context) => BlocProvider.of(context);
+  static LoginViewCubit getObject(context) => BlocProvider.of(context);
 
   LoginViewRepo loginViewRepo;
 
@@ -44,6 +44,7 @@ class LoginViewCubitCubit extends Cubit<LoginViewCubitStates> {
     loginViewRepo.signInWithGoogle().then((value) {
       emit(SignInWithGoogleSuccessState(value.user!.uid));
       CacheHelper.saveData(key: 'uId', value: value.user!.uid);
+      // TODO: Use GetUserData function like in Linkup App in this line
     }).catchError((error) {
       emit(SignInWithGoogleErrorState(error.toString()));
     });
