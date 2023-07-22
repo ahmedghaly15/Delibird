@@ -5,7 +5,7 @@ class SplashController extends GetxController {
 
   RxBool animate = false.obs;
   Future startAnimation() async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 300));
     animate.value = true;
   }
 }
