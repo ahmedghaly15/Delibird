@@ -9,14 +9,9 @@ import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/size_config.dart';
 import 'help_data_item.dart';
 
-class GetHelpViewBody extends StatefulWidget {
+class GetHelpViewBody extends StatelessWidget {
   const GetHelpViewBody({Key? key}) : super(key: key);
 
-  @override
-  State<GetHelpViewBody> createState() => _GetHelpViewBodyState();
-}
-
-class _GetHelpViewBodyState extends State<GetHelpViewBody> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetHelpCubit, GetHelpStates>(

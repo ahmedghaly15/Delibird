@@ -51,25 +51,20 @@ class HelpDataItem extends StatelessWidget {
                 ),
               ),
               collapsed: Container(),
-              expanded: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      bottom: 10,
-                    ),
-                    child: Text(
-                      cubit.getHelpModel!.help[index].answer!,
-                      softWrap: true,
-                      overflow: TextOverflow.fade,
-                      style: AppTextStyles.helpHeader.copyWith(
-                        color: Colors.black,
-                      ),
-                    ),
+              expanded: Padding(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 10,
+                  bottom: 10,
+                ),
+                child: Text(
+                  cubit.getHelpModel!.help[index].answer!,
+                  softWrap: true,
+                  overflow: TextOverflow.fade,
+                  style: AppTextStyles.helpHeader.copyWith(
+                    color: Colors.black,
                   ),
-                ],
+                ),
               ),
             ),
           ),
