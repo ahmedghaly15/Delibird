@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/global/app_colors.dart';
 import '../../../../core/utils/size_config.dart';
 
 class SocialAuthIcon extends StatelessWidget {
@@ -18,7 +19,7 @@ class SocialAuthIcon extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        splashColor: Colors.grey.withOpacity(0.1),
+        splashColor: AppColors.kGraySplashColor,
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 20),
           height: SizeConfig.screenHeight! * 0.052,

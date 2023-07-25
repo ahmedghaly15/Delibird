@@ -7,7 +7,9 @@ class AppColors {
   static const Color kDividerColor = Color(0xFF0062BD);
   static const Color kButtonSplashColor = Color(0xFF0079C0);
   static const Color kOrDividerColor = Color(0xFF639FD7);
-
+  static Color kShadowColor = const Color(0xFF000000).withOpacity(0.25);
+  static const Color kDefaultIconButtonColor = Color(0xFFB1B1B1);
+  static Color kGraySplashColor = Colors.grey.withOpacity(0.1);
   // Verify Colors
   static const Color kVerifyColor = Color(0xFF0062BD);
 }

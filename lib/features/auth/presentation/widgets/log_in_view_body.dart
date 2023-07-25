@@ -7,8 +7,7 @@ import '../../../../core/global/app_navigator.dart';
 import '../../../../core/network/local/cache_helper.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../home/presentation/views/home_view.dart';
-import '/core/global/app_assets.dart';
-import '/core/utils/size_config.dart';
+import 'background_image_and_help_icon.dart';
 import 'log_in_container.dart';
 import 'tall_white_background.dart';
 
@@ -23,16 +22,7 @@ class LoginViewBody extends StatelessWidget {
         LoginViewCubit cubit = LoginViewCubit.getObject(context);
         return Stack(
           children: <Widget>[
-            Positioned(
-              right: 0,
-              left: 0,
-              top: -10,
-              child: Image.asset(
-                AppAssets.city,
-                fit: BoxFit.cover,
-                height: SizeConfig.screenHeight! * 0.4,
-              ),
-            ),
+            const BackgroundImageAndHelpIcon(),
             TallWhiteBackground(
               isLoginWithPhone: false,
               isLoginView: true,

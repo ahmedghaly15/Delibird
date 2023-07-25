@@ -7,6 +7,7 @@ import 'package:nexo_app/features/splash/presentation/views/splash_view.dart';
 
 import 'core/global/app_theme.dart';
 import 'core/network/local/cache_helper.dart';
+import 'core/network/remote/dio_helper.dart';
 import 'core/utils/firebase_options.dart';
 import 'core/utils/my_bloc_observer.dart';
 import 'core/utils/service_locator.dart';
@@ -19,11 +20,13 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  Bloc.observer = MyBlocObserver();
+
   ServiceLocator().setupServiceLocators();
 
-  await CacheHelper.initSharedPref();
+  DioHelper.initDio();
 
-  Bloc.observer = MyBlocObserver();
+  await CacheHelper.initSharedPref();
 
   setSystemUIOverlayStyle();
 

@@ -13,6 +13,12 @@ class AppTextStyles {
     color: Colors.white,
   );
 
+  static const TextStyle helpHeader = TextStyle(
+    fontSize: 17,
+    color: AppColors.kPrimaryColor,
+    fontWeight: FontWeight.w400,
+  );
+
   static const TextStyle snackBarTitleTextStyle = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
