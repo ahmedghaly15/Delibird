@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '/core/global/app_assets.dart';
-import '/core/global/app_colors.dart';
 import '/core/global/app_navigator.dart';
 import '/core/network/local/cache_helper.dart';
 import '/core/utils/helper.dart';
@@ -12,6 +9,8 @@ import '/core/utils/size_config.dart';
 import '/core/utils/splash_controller.dart';
 import '/features/auth/presentation/views/log_in_view.dart';
 import '/features/home/presentation/views/home_view.dart';
+import 'circle_container.dart';
+import 'rotated_container.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -31,31 +30,25 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+
+    disposeSplashController();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => const SplashViewBody());
 
     splashController.startAnimation();
 
     return Stack(
-      children: [
+      children: <Widget>[
         Obx(
-          () => AnimatedPositioned(
-            duration: const Duration(milliseconds: 1700),
+          () => RotatedContainer(
+            splashController: splashController,
             right: splashController.animate.value ? -170 : 0,
-            // right: ,
             bottom: splashController.animate.value ? 170 : 0,
-            // bottom: -10,
-            child: Transform.rotate(
-              angle: 45 * (pi / -180),
-              child: Container(
-                height: SizeConfig.screenHeight! * 0.1,
-                width: SizeConfig.screenWidth! * 0.95,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.0),
-                  color: AppColors.kDarkBlue,
-                ),
-              ),
-            ),
           ),
         ),
         Positioned(
@@ -72,56 +65,24 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           ),
         ),
         Obx(
-          () => AnimatedPositioned(
-            duration: const Duration(milliseconds: 1700),
-
+          () => RotatedContainer(
+            splashController: splashController,
             left: splashController.animate.value ? -170 : 0,
-            // right: ,
             top: splashController.animate.value ? 170 : 0,
-            // bottom: -10,
-            child: Transform.rotate(
-              angle: 45 * (pi / -180),
-              child: Container(
-                height: SizeConfig.screenHeight! * 0.1,
-                width: SizeConfig.screenWidth! * 0.95,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.0),
-                  color: AppColors.kDarkBlue,
-                ),
-              ),
-            ),
           ),
         ),
         Obx(
-          () => AnimatedPositioned(
-            duration: const Duration(milliseconds: 1700),
+          () => CircleContainer(
+            splashController: splashController,
             left: splashController.animate.value ? -170 : 0,
-            // top: 0,
             bottom: splashController.animate.value ? -20 : -80,
-            child: Container(
-              height: SizeConfig.screenWidth! * 0.7,
-              width: SizeConfig.screenWidth! * 0.6,
-              decoration: const BoxDecoration(
-                color: AppColors.kLightBlue,
-                shape: BoxShape.circle,
-              ),
-            ),
           ),
         ),
         Obx(
-          () => AnimatedPositioned(
-            duration: const Duration(milliseconds: 1700),
+          () => CircleContainer(
+            splashController: splashController,
             right: splashController.animate.value ? -170 : 0,
-            // top: 0,
             top: splashController.animate.value ? -20 : -80,
-            child: Container(
-              height: SizeConfig.screenWidth! * 0.7,
-              width: SizeConfig.screenWidth! * 0.6,
-              decoration: const BoxDecoration(
-                color: AppColors.kLightBlue,
-                shape: BoxShape.circle,
-              ),
-            ),
           ),
         ),
       ],
@@ -138,5 +99,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         AppNavigator.navigateAndFinish(screen: () => const LoginView());
       }
     });
+  }
+
+  void disposeSplashController() {
+    splashController.dispose();
   }
 }
