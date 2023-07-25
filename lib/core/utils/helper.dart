@@ -82,4 +82,84 @@ class Helper {
     }
     return color;
   }
+
+  static void validatingPasswordField(String? value, BuildContext context) {
+    if (value!.isEmpty) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Enter your Password!",
+        state: SnackBarStates.error,
+      );
+    } else if (value.length < 8) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Too short password!",
+        state: SnackBarStates.error,
+      );
+    }
+  }
+
+  static void validatingEmailField(String? value, BuildContext context) {
+    if (value!.isEmpty) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Enter your Email!",
+        state: SnackBarStates.error,
+      );
+    }
+  }
+
+  static void validatingPhoneField(String? value, BuildContext context) {
+    if (value!.isEmpty) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Enter your Phone Number!",
+        state: SnackBarStates.error,
+      );
+    } else if (value.length < 10) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Too short Phone Number!",
+        state: SnackBarStates.error,
+      );
+    }
+  }
+
+  static void validatingConfirmPassField(
+    String? value,
+    BuildContext context,
+    TextEditingController passController,
+  ) {
+    if (value! != passController.text) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Password doesn't match!",
+        state: SnackBarStates.error,
+      );
+    } else if (value.isEmpty) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Confirm your Password!",
+        state: SnackBarStates.error,
+      );
+    }
+  }
+
+  static void validatingNameField(String? value, BuildContext context) {
+    if (value!.isEmpty) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: "Name can't be blank!",
+        state: SnackBarStates.error,
+      );
+    }
+  }
 }
