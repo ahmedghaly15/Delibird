@@ -7,4 +7,7 @@ class AppColors {
   static const Color kDividerColor = Color(0xFF0062BD);
   static const Color kButtonSplashColor = Color(0xFF0079C0);
   static const Color kOrDividerColor = Color(0xFF639FD7);
+
+  // Verify Colors
+  static const Color kVerifyColor = Color(0xFF0062BD);
 }

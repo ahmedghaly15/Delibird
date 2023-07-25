@@ -7,12 +7,14 @@ class AppNavigator {
     Transition? transition = Transition.rightToLeft,
     Duration? duration = const Duration(milliseconds: 400),
     Curve? curve = Curves.linear,
+    dynamic arguments,
   }) {
     Get.to(
       screen,
       transition: transition,
       duration: duration,
       curve: curve,
+      arguments: arguments,
     );
   }
 
@@ -25,12 +27,14 @@ class AppNavigator {
     Transition? transition = Transition.rightToLeftWithFade,
     Duration? duration = const Duration(milliseconds: 400),
     Curve? curve = Curves.linear,
+    dynamic arguments,
   }) {
     Get.off(
       screen,
       transition: transition,
       duration: duration,
       curve: curve,
+      arguments: arguments,
     );
   }
 
@@ -39,12 +43,14 @@ class AppNavigator {
     Transition? transition = Transition.rightToLeft,
     Duration? duration = const Duration(milliseconds: 400),
     Curve? curve = Curves.linear,
+    dynamic arguments,
   }) {
     Get.offAll(
       screen,
       transition: transition,
       duration: duration,
       curve: curve,
+      arguments: arguments,
     );
   }
 }
