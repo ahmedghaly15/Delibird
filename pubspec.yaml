@@ -10,6 +10,7 @@ dependencies:
   bloc: ^8.1.2
   cloud_firestore: ^4.8.3
   conditional_builder_null_safety: ^0.0.6
+  country_picker: ^2.0.20
   firebase_auth: ^4.7.1
   firebase_core: ^2.15.0
   flutter:
@@ -20,6 +21,7 @@ dependencies:
   get_it: ^7.6.0
   google_fonts: ^5.1.0
   google_sign_in: ^6.1.4
+  pinput: ^2.3.0
   shared_preferences: ^2.2.0
 
 dev_dependencies:

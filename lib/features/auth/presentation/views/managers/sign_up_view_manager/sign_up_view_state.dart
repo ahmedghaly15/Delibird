@@ -26,3 +26,10 @@ class CreateUserErrorState extends SignUpViewStates {
 class SwitchPassVisibleState extends SignUpViewStates {}
 
 class SwitchConfirmPassVisibleState extends SignUpViewStates {}
+
+class SelectedCountryChangesSuccessState extends SignUpViewStates {
+  final Country selectedCountry;
+  final Country value;
+
+  SelectedCountryChangesSuccessState(this.selectedCountry, this.value);
+}

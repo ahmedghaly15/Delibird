@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,5 +81,23 @@ class SignUpViewCubit extends Cubit<SignUpViewStates> {
   void switchConfirmPassVisibility() {
     confirmPassVisibility = !confirmPassVisibility;
     emit(SwitchConfirmPassVisibleState());
+  }
+
+  Country selectedCountry = Country(
+    phoneCode: "20",
+    countryCode: "EG",
+    e164Sc: 0,
+    geographic: true,
+    level: 1,
+    name: "Egypt",
+    example: "Egypt",
+    displayName: "Egypt",
+    displayNameNoCountryCode: "EN",
+    e164Key: "",
+  );
+
+  void changeSelectedCountry(Country value) {
+    selectedCountry = value;
+    emit(SelectedCountryChangesSuccessState(selectedCountry, value));
   }
 }
