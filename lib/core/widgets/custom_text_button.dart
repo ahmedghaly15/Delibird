@@ -19,7 +19,7 @@ class CustomTextButton extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        splashColor: AppColors.kButtonSplashColor.withOpacity(0.5),
+        splashColor: AppColors.kButtonSplashColor.withOpacity(0.2),
         onTap: onPressed,
         child: Text(text, style: textStyle),
       ),

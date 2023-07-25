@@ -8,13 +8,19 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
     required this.onPressed,
+    required this.isLoginWithPhone,
     required this.text,
     this.textStyle = AppTextStyles.buttonStyle,
+    this.height,
+    this.width,
   }) : super(key: key);
 
   final void Function() onPressed;
   final String text;
   final TextStyle? textStyle;
+  final double? height;
+  final double? width;
+  final bool isLoginWithPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +31,8 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(50.0),
         onTap: onPressed,
         child: Container(
-          height: SizeConfig.screenHeight! * 0.048,
-          width: SizeConfig.screenWidth! * 0.65,
+          height: height ?? SizeConfig.screenHeight! * 0.048,
+          width: width ?? SizeConfig.screenWidth! * 0.65,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.0),
             gradient: LinearGradient(
@@ -37,9 +43,29 @@ class CustomButton extends StatelessWidget {
               ],
             ),
           ),
-          child: Center(
-            child: Text(text, style: textStyle),
-          ),
+          child: isLoginWithPhone
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Row(
+                    children: <Widget>[
+                      const Icon(
+                        Icons.phone,
+                        color: Colors.white,
+                        size: 25,
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                      Text(text, style: textStyle),
+                      const Spacer(
+                        flex: 3,
+                      ),
+                    ],
+                  ),
+                )
+              : Center(
+                  child: Text(text, style: textStyle),
+                ),
         ),
       ),
     );

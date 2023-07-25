@@ -18,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onSubmit,
     this.onEditingComplete,
     this.onChanged,
+    this.prefixIcon,
   }) : super(key: key);
 
   final FocusNode? focusNode;
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextStyle? hintStyle;
   final bool? obscure;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final TextEditingController controller;
   final TextCapitalization textCapitalization;
   final String? Function(String?)? validating;
@@ -56,6 +58,7 @@ class CustomTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           suffixIconColor: AppColors.kPrimaryColor,
+          prefixIcon: prefixIcon,
           hintText: hint,
           hintStyle: hintStyle,
           contentPadding: const EdgeInsets.all(16),
@@ -66,7 +69,8 @@ class CustomTextFormField extends StatelessWidget {
         ),
         style: AppTextStyles.hintStyle.copyWith(
           color: Colors.black,
-          fontSize: 14,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
         ),
         cursorColor: AppColors.kPrimaryColor,
         obscureText: obscure ?? false,
