@@ -22,7 +22,10 @@ class SignUpViewBody extends StatelessWidget {
             height: SizeConfig.screenHeight! * 0.4,
           ),
         ),
-        const TallWhiteBackground(isLoginView: false),
+        const TallWhiteBackground(
+          isLoginView: false,
+          isLoginWithPhone: false,
+        ),
         const SignUpContainer(),
       ],
     );

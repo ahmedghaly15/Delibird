@@ -129,7 +129,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   void moveToTheNextView() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(milliseconds: 2500), () {
       Helper.uId = CacheHelper.getStringData(key: 'uId');
 
       if (Helper.uId != null) {

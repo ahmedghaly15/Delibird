@@ -6,7 +6,9 @@ import 'package:nexo_app/features/auth/presentation/views/managers/sign_up_view_
 import '../widgets/sign_up_view_body.dart';
 
 class SignUpView extends StatelessWidget {
-  const SignUpView({Key? key}) : super(key: key);
+  const SignUpView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

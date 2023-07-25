@@ -1,8 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:nexo_app/features/phone_verification/presentation/views/verify_view.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
+import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_circular_progress_indicator.dart';
@@ -40,6 +42,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   void dispose() {
     disposeControllers();
+    disposeFocusNodes();
     super.dispose();
   }
 
@@ -65,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.emailAddress,
             validating: (String? value) {
-              if (value!.isEmpty) return "Email can't be blank";
+              Helper.validatingEmailField(value, context);
               return null;
             },
             onEditingComplete: () =>
@@ -86,11 +89,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             obscure: widget.cubit.passVisibility,
             validating: (String? value) {
-              if (value!.isEmpty) {
-                return "Enter your Password";
-              } else if (value.length < 8) {
-                return "Too short password";
-              }
+              Helper.validatingPasswordField(value, context);
               return null;
             },
             onSubmit: (String value) => login(context),
@@ -99,7 +98,11 @@ class _LoginFormState extends State<LoginForm> {
           ConditionalBuilder(
             condition: widget.state is! LoginLoadingState,
             builder: (context) => CustomButton(
-              onPressed: () => login(context),
+              isLoginWithPhone: false,
+              onPressed: () {
+                AppNavigator.navigateTo(screen: () => const VerifyView());
+                // login(context);
+              },
               text: "Login",
             ),
             fallback: (context) => const CustomCircularProgressIndicator(),
@@ -132,6 +135,11 @@ class _LoginFormState extends State<LoginForm> {
   void disposeControllers() {
     passController.dispose();
     emailController.dispose();
+  }
+
+  void disposeFocusNodes() {
+    passFocusNode.dispose();
+    emailFocusNode.dispose();
   }
 
   void login(BuildContext context) {

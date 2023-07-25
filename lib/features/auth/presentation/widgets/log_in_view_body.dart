@@ -34,6 +34,7 @@ class LoginViewBody extends StatelessWidget {
               ),
             ),
             TallWhiteBackground(
+              isLoginWithPhone: false,
               isLoginView: true,
               loginViewCubit: cubit,
             ),

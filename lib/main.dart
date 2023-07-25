@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:nexo_app/features/splash/presentation/views/splash_view.dart';
 
 import 'core/global/app_theme.dart';
 import 'core/network/local/cache_helper.dart';
@@ -10,7 +11,6 @@ import 'core/utils/firebase_options.dart';
 import 'core/utils/my_bloc_observer.dart';
 import 'core/utils/service_locator.dart';
 import 'core/utils/size_config.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +43,18 @@ class DelibirdApp extends StatelessWidget {
 
   // TODO: remember to look at Responsive Class on Zahraa's GitHub
   // TODO: Login with email and password & verify with phone number when the user creating a new account
+  // TODO: try to build Help Screen => make an info_icon in Login & Sign up Views at the top right side, use it to navigate to Help Screen
+
+  /*
+  
+  TODO: use country_picker package in the phone TextField
+
+  Phone Authentication errors:
+
+  invalid-phone-number 
+  phone-number-already-exists
+  
+   */
 
   @override
   Widget build(BuildContext context) {

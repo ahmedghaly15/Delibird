@@ -9,14 +9,9 @@ import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../home/presentation/views/home_view.dart';
 
-class SignUpContainer extends StatefulWidget {
+class SignUpContainer extends StatelessWidget {
   const SignUpContainer({Key? key}) : super(key: key);
 
-  @override
-  State<SignUpContainer> createState() => _SignUpContainerState();
-}
-
-class _SignUpContainerState extends State<SignUpContainer> {
   @override
   Widget build(BuildContext context) {
     return Positioned(

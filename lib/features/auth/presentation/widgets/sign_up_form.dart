@@ -1,9 +1,12 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nexo_app/features/auth/presentation/widgets/phone_text_field.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
+import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_circular_progress_indicator.dart';
@@ -11,6 +14,7 @@ import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../views/log_in_view.dart';
 import '../views/managers/sign_up_view_manager/sign_up_view_cubit.dart';
+
 import 'custom_divider.dart';
 import 'visibility_icon_button.dart';
 
@@ -47,6 +51,7 @@ class _SignUpFormState extends State<SignUpForm> {
   void dispose() {
     super.dispose();
 
+    disposeFocusNodes();
     disposeControllers();
   }
 
@@ -72,7 +77,7 @@ class _SignUpFormState extends State<SignUpForm> {
             textCapitalization: TextCapitalization.words,
             keyboardType: TextInputType.name,
             validating: (String? value) {
-              if (value!.isEmpty) return "Name can't be blank";
+              Helper.validatingNameField(value, context);
               return null;
             },
             onEditingComplete: () =>
@@ -86,7 +91,7 @@ class _SignUpFormState extends State<SignUpForm> {
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.emailAddress,
             validating: (String? value) {
-              if (value!.isEmpty) return "Email can't be blank";
+              Helper.validatingEmailField(value, context);
               return null;
             },
             onEditingComplete: () =>
@@ -107,11 +112,7 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             obscure: widget.cubit.passVisibility,
             validating: (String? value) {
-              if (value!.isEmpty) {
-                return "Enter your Password";
-              } else if (value.length < 8) {
-                return "Too short password";
-              }
+              Helper.validatingPasswordField(value, context);
               return null;
             },
             onEditingComplete: () =>
@@ -132,37 +133,30 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             obscure: widget.cubit.confirmPassVisibility,
             validating: (String? value) {
-              if (value! != passController.text) {
-                return "Password doesn't match";
-              } else if (value.isEmpty) {
-                return "Confirm your Password";
-              }
+              Helper.validatingConfirmPassField(
+                value,
+                context,
+                passController,
+              );
               return null;
             },
             onEditingComplete: () =>
                 FocusScope.of(context).requestFocus(phonePassFocusNode),
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.015),
-          CustomTextFormField(
-            hint: "Enter your Phone Number",
-            controller: phoneController,
-            focusNode: phonePassFocusNode,
-            textCapitalization: TextCapitalization.none,
-            keyboardType: TextInputType.phone,
-            validating: (String? value) {
-              if (value!.isEmpty) {
-                return "Enter your Phone Number";
-              } else if (value.length < 11) {
-                return "Too short Phone Number";
-              }
-              return null;
+          PhoneTextField(
+            phoneController: phoneController,
+            phonePassFocusNode: phonePassFocusNode,
+            onSelect: (Country value) {
+              widget.cubit.changeSelectedCountry(value);
             },
-            onSubmit: (String value) => signUp(context),
+            selectedCountry: widget.cubit.selectedCountry,
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.035),
           ConditionalBuilder(
             condition: widget.state is! SignUpLoadingState,
             builder: (context) => CustomButton(
+              isLoginWithPhone: false,
               onPressed: () => signUp(context),
               text: "Sign up",
             ),
@@ -200,6 +194,14 @@ class _SignUpFormState extends State<SignUpForm> {
     passController.dispose();
     confirmPassController.dispose();
     phoneController.dispose();
+  }
+
+  void disposeFocusNodes() {
+    nameFocusNode.dispose();
+    emailFocusNode.dispose();
+    passFocusNode.dispose();
+    confirmPassFocusNode.dispose();
+    phonePassFocusNode.dispose();
   }
 
   void signUp(BuildContext context) {
