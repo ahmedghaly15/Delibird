@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_text_styles.dart';
-import '../views/managers/get_help_cubit.dart';
+import '../views/manager/get_help_cubit.dart';
 
 class HelpDataItem extends StatelessWidget {
   const HelpDataItem({

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -16,106 +15,41 @@ class VerifyViewBody extends StatefulWidget {
 }
 
 class _VerifyViewBodyState extends State<VerifyViewBody> {
+  final defaultPinTheme = PinTheme(
+    width: 56,
+    height: 56,
+    textStyle: const TextStyle(
+      fontSize: 22,
+      color: Color.fromRGBO(30, 60, 87, 1),
+    ),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.25),
+          offset: const Offset(2, 5),
+          blurRadius: 20,
+          spreadRadius: 5,
+        ),
+      ],
+    ),
+  );
+
   final GlobalKey<FormState> formKey = GlobalKey();
-
-  /*
-  
-   TODO: 
-
-  phoneController.selection = TextSelection.fromPosition(
-      TextPosition(
-        offset: phoneController.text.length,
-      ),
-    );
-
-   */
 
   final TextEditingController phoneController = TextEditingController();
   final FocusNode pinputFocusNode = FocusNode();
 
-  String? otpCode;
-  // final String verificationId = Get.arguments[0];
-  FirebaseAuth auth = FirebaseAuth.instance;
-
-  // final TextEditingController firstBoxController = TextEditingController();
-  // final TextEditingController secondBoxController = TextEditingController();
-  // final TextEditingController thirdBoxController = TextEditingController();
-  // final TextEditingController fourthBoxController = TextEditingController();
-
-  // final FocusNode firstBoxFocusNode = FocusNode();
-  // final FocusNode secondBoxFocusNode = FocusNode();
-  // final FocusNode thirdBoxFocusNode = FocusNode();
-  // final FocusNode fourthBoxFocusNode = FocusNode();
-
-  // String value1 = "";
-  // String value2 = "";
-  // String value3 = "";
-  // String value4 = "";
-
-  // void verifyOtp(
-  //   String verificationId,
-  //   String userOtp,
-  // ) async {
-  //   try {
-  //     PhoneAuthCredential creds = PhoneAuthProvider.credential(
-  //         verificationId: verificationId, smsCode: userOtp);
-  //     User? user = (await auth.signInWithCredential(creds)).user;
-  //     if (user != null) {
-  //       AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
-  //     }
-  //   } on FirebaseAuthException catch (e) {
-  //     Helper.buildSnackBar(
-  //       context: context,
-  //       title: "Warning",
-  //       message: e.message.toString(),
-  //       state: SnackBarStates.error,
-  //     );
-  //   }
-  // }
-
-  // void _login() {
-  //   if (otpCode != null) {
-  //     verifyOtp(verificationId, otpCode!);
-  //   } else {
-  //     Helper.buildSnackBar(
-  //       context: context,
-  //       title: "Warning",
-  //       message: "Enter 6 digits code",
-  //       state: SnackBarStates.error,
-  //     );
-  //   }
-  // }
-
   @override
   void dispose() {
-    phoneController.dispose();
-    pinputFocusNode.dispose();
+    disposeControllerAndFocusNode();
 
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.0),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.25),
-            offset: const Offset(2, 5),
-            blurRadius: 20,
-            spreadRadius: 5,
-          ),
-        ],
-      ),
-    );
     // String smsCode = "$value1$value2$value3$value4";
 
     return Column(
@@ -147,24 +81,18 @@ class _VerifyViewBodyState extends State<VerifyViewBody> {
                 child: Directionality(
                   textDirection: TextDirection.ltr,
                   child: Pinput(
-                    length: 6,
-
+                    length: 4,
                     autofocus: true,
                     controller: phoneController,
                     focusNode: pinputFocusNode,
                     androidSmsAutofillMethod:
                         AndroidSmsAutofillMethod.smsUserConsentApi,
                     pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-
                     listenForMultipleSmsOnAndroid: true,
                     defaultPinTheme: defaultPinTheme,
                     validator: (value) {
                       return value == '2222' ? null : 'Pin is incorrect';
                     },
-                    // onClipboardFound: (value) {
-                    //   debugPrint('onClipboardFound: $value');
-                    //   pinController.setText(value);
-                    // },
                     hapticFeedbackType: HapticFeedbackType.lightImpact,
                     onCompleted: (pin) {
                       debugPrint('onCompleted: $pin');
@@ -226,15 +154,6 @@ class _VerifyViewBodyState extends State<VerifyViewBody> {
               height: SizeConfig.screenHeight! * 0.065,
               width: SizeConfig.screenWidth! * 0.75,
               onPressed: () {
-                // _login();
-
-                // FirebaseAuth auth = FirebaseAuth.instance;
-                // PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                //   verificationId: "",
-                //   smsCode: smsCode,
-                // );
-                // await auth.signInWithCredential(credential);
-
                 // TODO: Finish functionality of this function
               },
               text: "Verify",
@@ -245,17 +164,8 @@ class _VerifyViewBodyState extends State<VerifyViewBody> {
     );
   }
 
-  // void disposeControllers() {
-  //   firstBoxController.dispose();
-  //   secondBoxController.dispose();
-  //   thirdBoxController.dispose();
-  //   fourthBoxController.dispose();
-  // }
-
-  // void disposeFocusNodes() {
-  //   firstBoxFocusNode.dispose();
-  //   secondBoxFocusNode.dispose();
-  //   thirdBoxFocusNode.dispose();
-  //   fourthBoxFocusNode.dispose();
-  // }
+  void disposeControllerAndFocusNode() {
+    phoneController.dispose();
+    pinputFocusNode.dispose();
+  }
 }

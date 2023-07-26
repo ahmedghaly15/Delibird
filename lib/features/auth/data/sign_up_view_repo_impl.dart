@@ -22,10 +22,10 @@ class SignUpViewRepoImpl extends SignUpViewRepo {
 
   @override
   Future<void> firestoreCreateUSer({
-    required String name,
-    required String email,
-    required String phone,
-    required String uId,
+    String? name,
+    String? email,
+    String? phone,
+    String? uId,
   }) async {
     UserModel userModel = UserModel(
       name: name,

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:nexo_app/core/network/remote/end_points.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -13,7 +12,14 @@ class DioHelper {
     );
   }
 
-  static Future<Response> getHelpData() async {
-    return await dio.get(EndPointsHandler.getHelpEndPoint);
+  static Future<Response> getData({required String path}) async {
+    return await dio.get(path);
+  }
+
+  static Future<Response> postData({
+    required String path,
+    required Map<String, dynamic> data,
+  }) async {
+    return await dio.post(path, data: data);
   }
 }

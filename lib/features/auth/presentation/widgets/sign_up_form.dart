@@ -151,6 +151,7 @@ class _SignUpFormState extends State<SignUpForm> {
               widget.cubit.changeSelectedCountry(value);
             },
             selectedCountry: widget.cubit.selectedCountry,
+            onSubmit: (String value) => signUp(context),
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.035),
           ConditionalBuilder(
@@ -212,7 +213,8 @@ class _SignUpFormState extends State<SignUpForm> {
         email: emailController.text,
         username: nameController.text,
         password: passController.text,
-        phone: phoneController.text,
+        phone:
+            "${widget.cubit.selectedCountry.phoneCode}${phoneController.text}",
       );
     }
   }

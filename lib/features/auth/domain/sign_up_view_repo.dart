@@ -11,9 +11,9 @@ abstract class SignUpViewRepo {
   });
 
   Future<void> firestoreCreateUSer({
-    required String name,
-    required String email,
-    required String phone,
-    required String uId,
+    String? name,
+    String? email,
+    String? phone,
+    String? uId,
   });
 }

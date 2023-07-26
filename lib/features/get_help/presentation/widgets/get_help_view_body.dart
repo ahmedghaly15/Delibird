@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
-import 'package:nexo_app/features/get_help/presentation/views/managers/get_help_cubit.dart';
+import 'package:nexo_app/core/global/app_navigator.dart';
+import 'package:nexo_app/core/widgets/custom_button.dart';
 
 import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/size_config.dart';
+import '../views/manager/get_help_cubit.dart';
 import 'help_data_item.dart';
 
 class GetHelpViewBody extends StatelessWidget {
@@ -41,6 +42,7 @@ class GetHelpViewBody extends StatelessWidget {
                 style: AppTextStyles.welcomeStyle.copyWith(color: Colors.white),
               ),
               Expanded(
+                flex: 12,
                 child: ListView.builder(
                   padding: const EdgeInsets.only(top: 36),
                   itemCount: cubit.getHelpModel?.help.length ?? 0,
@@ -57,6 +59,15 @@ class GetHelpViewBody extends StatelessWidget {
                     );
                   },
                 ),
+              ),
+              CustomButton(
+                onPressed: () => AppNavigator.getBack(),
+                isLoginWithPhone: false,
+                text: "Continue",
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(),
               ),
             ],
           ),

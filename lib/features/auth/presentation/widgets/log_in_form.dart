@@ -1,6 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-import 'package:nexo_app/features/phone_verification/presentation/views/verify_view.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
@@ -99,10 +98,7 @@ class _LoginFormState extends State<LoginForm> {
             condition: widget.state is! LoginLoadingState,
             builder: (context) => CustomButton(
               isLoginWithPhone: false,
-              onPressed: () {
-                AppNavigator.navigateTo(screen: () => const VerifyView());
-                // login(context);
-              },
+              onPressed: () => login(context),
               text: "Login",
             ),
             fallback: (context) => const CustomCircularProgressIndicator(),

@@ -53,10 +53,10 @@ class SignUpViewCubit extends Cubit<SignUpViewStates> {
   }
 
   void firestoreCreateUSer({
-    required String name,
-    required String email,
-    required String phone,
-    required String uId,
+    String? name,
+    String? email,
+    String? phone,
+    String? uId,
   }) {
     signUpViewRepo
         .firestoreCreateUSer(
@@ -67,7 +67,7 @@ class SignUpViewCubit extends Cubit<SignUpViewStates> {
     )
         .then((value) {
       emit(CreateUserSuccessState());
-      emit(SignUpSuccessState(uId));
+      emit(SignUpSuccessState(uId!));
     }).catchError((error) {
       CreateUserErrorState(error.toString());
     });
