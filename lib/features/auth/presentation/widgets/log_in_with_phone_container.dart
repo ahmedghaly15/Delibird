@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:nexo_app/features/auth/presentation/widgets/log_in_with_phone_form.dart';
 
+import '../../../../core/global/app_navigator.dart';
+import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
+import '../../../home/presentation/views/home_view.dart';
+import '../views/managers/log_in_with_phone_manager/login_with_phone_cubit.dart';
 
 class LoginWithPhoneContainer extends StatelessWidget {
   const LoginWithPhoneContainer({Key? key}) : super(key: key);
@@ -28,8 +34,60 @@ class LoginWithPhoneContainer extends StatelessWidget {
             ),
           ],
         ),
-        child: const LoginWithPhoneForm(),
+        child: BlocConsumer<LoginWithPhoneCubit, LoginWithPhoneStates>(
+          listener: (context, state) => controlLoginWithPhoneViewStates(
+            LoginWithPhoneCubit.getObject(context),
+            state,
+            context,
+          ),
+          builder: (context, state) {
+            LoginWithPhoneCubit cubit = LoginWithPhoneCubit.getObject(context);
+            return LoginWithPhoneForm(
+              cubit: cubit,
+              state: state,
+            );
+          },
+        ),
       ),
     );
+  }
+
+  void controlLoginWithPhoneViewStates(
+    LoginWithPhoneCubit cubit,
+    LoginWithPhoneStates state,
+    BuildContext context,
+  ) {
+    if (state is VerifyPhoneSuccessState &&
+        cubit.verifyPhoneModel!.status == 200) {
+      AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
+      Helper.buildSnackBar(
+        context: context,
+        title: "Success",
+        message:
+            LoginWithPhoneCubit.getObject(context).verifyPhoneModel!.message!,
+        state: SnackBarStates.success,
+      );
+    }
+
+    // To get the Error Messages
+    // I am Handling it using Validation of Form, So i comment it
+    // if (state is VerifyPhoneSuccessState &&
+    //     cubit.verifyPhoneModel!.status == 405) {
+    //   Helper.buildSnackBar(
+    //     context: context,
+    //     title: "Warning",
+    //     message: cubit.verifyPhoneModel!.message!,
+    //     state: SnackBarStates.error,
+    //   );
+    // }
+
+    if (state is VerifyPhoneErrorState) {
+      Helper.buildSnackBar(
+        context: context,
+        title: "Warning",
+        message: state.error,
+        state: SnackBarStates.error,
+      );
+    }
   }
 }

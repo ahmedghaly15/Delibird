@@ -1,16 +1,27 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:nexo_app/core/global/app_navigator.dart';
-import 'package:nexo_app/features/phone_verification/presentation/views/verify_view.dart';
+import 'package:nexo_app/core/widgets/custom_circular_progress_indicator.dart';
 
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+
+import '../views/managers/log_in_with_phone_manager/login_with_phone_cubit.dart';
 import 'custom_divider.dart';
+import 'phone_text_field.dart';
 
 class LoginWithPhoneForm extends StatefulWidget {
-  const LoginWithPhoneForm({Key? key}) : super(key: key);
+  const LoginWithPhoneForm({
+    Key? key,
+    required this.cubit,
+    required this.state,
+  }) : super(key: key);
+
+  final LoginWithPhoneCubit cubit;
+  final LoginWithPhoneStates state;
 
   @override
   State<LoginWithPhoneForm> createState() => _LoginWithPhoneFormState();
@@ -68,39 +79,24 @@ class _LoginWithPhoneFormState extends State<LoginWithPhoneForm> {
                 FocusScope.of(context).requestFocus(phoneFocusNode),
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.015),
-          CustomTextFormField(
-            hint: "Enter your Phone Number",
-            controller: phoneController,
-            focusNode: phoneFocusNode,
-            textCapitalization: TextCapitalization.none,
-            keyboardType: TextInputType.phone,
-            validating: (String? value) {
-              if (value!.isEmpty) {
-                Helper.buildSnackBar(
-                  context: context,
-                  title: "Warning",
-                  message: "Enter your Phone Number!",
-                  state: SnackBarStates.error,
-                );
-              } else if (value.length < 8) {
-                Helper.buildSnackBar(
-                  context: context,
-                  title: "Warning",
-                  message: "Too short Phone Number!",
-                  state: SnackBarStates.error,
-                );
-              }
-              return null;
+          PhoneTextField(
+            phoneController: phoneController,
+            phonePassFocusNode: phoneFocusNode,
+            onSelect: (Country value) {
+              widget.cubit.changeSelectedCountry(value);
             },
+            selectedCountry: widget.cubit.selectedCountry,
             onSubmit: (String value) => loginWithPhone(context),
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.035),
-          CustomButton(
-            isLoginWithPhone: false,
-            onPressed: () => AppNavigator.navigateTo(
-              screen: () => const VerifyView(),
+          ConditionalBuilder(
+            condition: widget.state is! VerifyPhoneLoadingState,
+            builder: (context) => CustomButton(
+              isLoginWithPhone: false,
+              onPressed: () => loginWithPhone(context),
+              text: "Login",
             ),
-            text: "Login",
+            fallback: (context) => const CustomCircularProgressIndicator(),
           ),
         ],
       ),
@@ -118,68 +114,15 @@ class _LoginWithPhoneFormState extends State<LoginWithPhoneForm> {
   }
 
   void loginWithPhone(BuildContext context) {
-    // if (formKey.currentState!.validate()) {
-    //   FocusScope.of(context).unfocus();
-    // }
-  }
+    if (formKey.currentState!.validate()) {
+      FocusScope.of(context).unfocus();
 
-  Future<void> loginWithPhoneNumber(String phoneNumber) async {
-    // FirebaseAuth auth = FirebaseAuth.instance;
-
-    // await auth.verifyPhoneNumber(
-    //   phoneNumber: phoneNumber,
-    //   timeout: const Duration(seconds: 60),
-    //   verificationCompleted: (PhoneAuthCredential credential) async {
-    //     await auth.signInWithCredential(credential);
-    //     debugPrint("vERIFICATION COMPLETED");
-    //     // authentication successful, do something
-    //   },
-    //   verificationFailed: (FirebaseAuthException e) {
-    //     // authentication failed, do something
-    //     debugPrint("vERIFICATION FAILED");
-    //     if (e.code == "invalid-phone-number") {
-    //       Helper.buildSnackBar(
-    //         context: context,
-    //         title: "Warning",
-    //         message: "Invalid Phone Number!",
-    //         state: SnackBarStates.error,
-    //       );
-    //     }
-
-    //     if (e.code == "phone-number-already-exists") {
-    //       Helper.buildSnackBar(
-    //         context: context,
-    //         title: "Warning",
-    //         message: "Phone Number Already Exists!",
-    //         state: SnackBarStates.error,
-    //       );
-    //     }
-    //   },
-    //   codeSent: (String verificationId, int? resendToken) async {
-    //     // code sent to phone number, save verificationId for later use
-    //     debugPrint("VERIFICATION CODE SENT");
-    //     String smsCode = ''; // get sms code from user
-    //     PhoneAuthCredential credential = PhoneAuthProvider.credential(
-    //       verificationId: verificationId,
-    //       smsCode: smsCode,
-    //     );
-    //     await auth.signInWithCredential(credential);
-    //     AppNavigator.navigateTo(
-    //       screen: () => const VerifyView(),
-    //       arguments: [verificationId],
-    //     );
-
-    //     // authentication successful, do something
-    //   },
-    //   codeAutoRetrievalTimeout: (String verificationId) {
-    //     debugPrint("CODE AUTO RETRIEVAL TIME OUT");
-    //     Helper.buildSnackBar(
-    //       context: context,
-    //       title: "Warning",
-    //       message: "Verification process has timed out",
-    //       state: SnackBarStates.error,
-    //     );
-    //   },
-    // );
+      widget.cubit.verifyPhoneNumber(
+        context: context,
+        fullName: nameController.text,
+        phoneNumber:
+            "${widget.cubit.selectedCountry.phoneCode}${phoneController.text}",
+      );
+    }
   }
 }
