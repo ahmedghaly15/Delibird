@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../core/network/local/cache_helper.dart';
+import '../../../../../layout/presentation/views/manager/delibird_app_cubit.dart';
 import '/features/auth/domain/sign_up_view_repo.dart';
 
 part 'sign_up_view_state.dart';
@@ -44,7 +45,7 @@ class SignUpViewCubit extends Cubit<SignUpViewStates> {
       );
       CacheHelper.saveData(key: 'uId', value: value.user!.uid);
 
-      // TODO: Use GetUserData function like in Linkup App in this line
+      DelibirdAppCubit.getObject(context).getUserData(value.user!.uid);
     }).catchError((error) {
       if (error is FirebaseAuthException) {
         emit(SignUpErrorState(error.code.toString()));

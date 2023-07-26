@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexo_app/features/auth/presentation/views/managers/sign_up_view_manager/sign_up_view_cubit.dart';
 import 'package:nexo_app/features/auth/presentation/widgets/sign_up_form.dart';
+import 'package:nexo_app/features/layout/presentation/views/layout_view.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/network/local/cache_helper.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
-import '../../../home/presentation/views/home_view.dart';
 
 class SignUpContainer extends StatelessWidget {
   const SignUpContainer({Key? key}) : super(key: key);
@@ -69,7 +69,7 @@ class SignUpContainer extends StatelessWidget {
 
     if (state is SignUpSuccessState) {
       CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-        AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
+        AppNavigator.navigateAndFinishAll(screen: () => const LayoutView());
       });
       Helper.buildSnackBar(
         title: "Success",
@@ -80,7 +80,7 @@ class SignUpContainer extends StatelessWidget {
     }
 
     if (state is CreateUserSuccessState) {
-      AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
+      AppNavigator.navigateAndFinishAll(screen: () => const LayoutView());
     }
   }
 }

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:nexo_app/features/auth/presentation/widgets/log_in_with_phone_form.dart';
+import 'package:nexo_app/features/layout/presentation/views/layout_view.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
-import '../../../home/presentation/views/home_view.dart';
 import '../views/managers/log_in_with_phone_manager/login_with_phone_cubit.dart';
 
 class LoginWithPhoneContainer extends StatelessWidget {
@@ -59,7 +59,7 @@ class LoginWithPhoneContainer extends StatelessWidget {
   ) {
     if (state is VerifyPhoneSuccessState &&
         cubit.verifyPhoneModel!.status == 200) {
-      AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
+      AppNavigator.navigateAndFinishAll(screen: () => const LayoutView());
       Helper.buildSnackBar(
         context: context,
         title: "Success",

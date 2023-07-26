@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:nexo_app/features/layout/presentation/views/manager/delibird_app_cubit.dart';
 
 import 'core/global/app_theme.dart';
 import 'core/network/local/cache_helper.dart';
@@ -59,11 +60,14 @@ class DelibirdApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Delibird-App',
-      theme: AppTheme.appTheme(),
-      home: const SplashView(),
+    return BlocProvider(
+      create: (context) => serviceLocator.get<DelibirdAppCubit>(),
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Delibird-App',
+        theme: AppTheme.appTheme(),
+        home: const SplashView(),
+      ),
     );
   }
 }

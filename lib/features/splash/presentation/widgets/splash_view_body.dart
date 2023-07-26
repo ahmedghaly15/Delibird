@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nexo_app/features/layout/presentation/views/layout_view.dart';
 
 import '/core/global/app_assets.dart';
 import '/core/global/app_navigator.dart';
@@ -8,7 +9,6 @@ import '/core/utils/helper.dart';
 import '/core/utils/size_config.dart';
 import '/core/utils/splash_controller.dart';
 import '/features/auth/presentation/views/log_in_view.dart';
-import '/features/home/presentation/views/home_view.dart';
 import 'circle_container.dart';
 import 'rotated_container.dart';
 
@@ -94,7 +94,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       Helper.uId = CacheHelper.getStringData(key: 'uId');
 
       if (Helper.uId != null) {
-        AppNavigator.navigateAndFinishAll(screen: () => const HomeView());
+        AppNavigator.navigateAndFinishAll(screen: () => const LayoutView());
       } else {
         AppNavigator.navigateAndFinish(screen: () => const LoginView());
       }

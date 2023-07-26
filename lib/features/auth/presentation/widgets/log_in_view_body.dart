@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexo_app/features/auth/presentation/views/managers/log_in_view_manager/login_view_cubit.dart';
 import 'package:nexo_app/features/auth/presentation/views/managers/log_in_view_manager/login_view_state.dart';
+import 'package:nexo_app/features/layout/presentation/views/layout_view.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/network/local/cache_helper.dart';
 import '../../../../core/utils/helper.dart';
-import '../../../home/presentation/views/home_view.dart';
 import 'background_image_and_help_icon.dart';
 import 'log_in_container.dart';
 import 'tall_white_background.dart';
@@ -59,13 +59,13 @@ class LoginViewBody extends StatelessWidget {
 
     if (state is LoginSuccessState) {
       CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-        AppNavigator.navigateAndFinish(screen: () => const HomeView());
+        AppNavigator.navigateAndFinish(screen: () => const LayoutView());
       });
     }
 
     if (state is SignInWithGoogleSuccessState) {
       CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-        AppNavigator.navigateAndFinish(screen: () => const HomeView());
+        AppNavigator.navigateAndFinish(screen: () => const LayoutView());
       });
     }
   }

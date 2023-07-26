@@ -10,6 +10,9 @@ import 'package:nexo_app/features/auth/presentation/views/managers/log_in_with_p
 import 'package:nexo_app/features/auth/presentation/views/managers/sign_up_view_manager/sign_up_view_cubit.dart';
 import 'package:nexo_app/features/get_help/data/get_help_repo_impl.dart';
 import 'package:nexo_app/features/get_help/domain/get_help_repo.dart';
+import 'package:nexo_app/features/layout/data/layout_repo_impl.dart';
+import 'package:nexo_app/features/layout/domain/layout_repo.dart';
+import 'package:nexo_app/features/layout/presentation/views/manager/delibird_app_cubit.dart';
 
 import '../../features/get_help/presentation/views/manager/get_help_cubit.dart';
 
@@ -37,6 +40,10 @@ class ServiceLocator {
       () => LoginViewCubit(serviceLocator.get<LoginViewRepo>()),
     );
 
+    serviceLocator.registerLazySingleton<LayoutRepo>(
+      () => LayoutRepoImpl(),
+    );
+
     serviceLocator.registerFactory<SignUpViewCubit>(
       () => SignUpViewCubit(serviceLocator.get<SignUpViewRepo>()),
     );
@@ -47,6 +54,10 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<LoginWithPhoneCubit>(
       () => LoginWithPhoneCubit(serviceLocator.get<LoginWithPhoneRepo>()),
+    );
+
+    serviceLocator.registerFactory<DelibirdAppCubit>(
+      () => DelibirdAppCubit(serviceLocator.get<LayoutRepo>()),
     );
   }
 }
