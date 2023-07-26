@@ -25,7 +25,7 @@ class AppTextStyles {
     color: Colors.white,
   );
 
-  static const TextStyle OrStyle = TextStyle(
+  static const TextStyle orStyle = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w400,
     color: AppColors.kOrDividerColor,

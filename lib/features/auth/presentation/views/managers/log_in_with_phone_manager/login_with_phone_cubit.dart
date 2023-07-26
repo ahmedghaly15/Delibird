@@ -2,7 +2,6 @@ import 'package:country_picker/country_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nexo_app/features/auth/presentation/views/managers/sign_up_view_manager/sign_up_view_cubit.dart';
 
 import '../../../../../../core/models/verify_phone_model.dart';
 import '../../../../domain/log_in_with_phone_repo.dart';
@@ -55,12 +54,6 @@ class LoginWithPhoneCubit extends Cubit<LoginWithPhoneStates> {
     )
         .then((value) {
       verifyPhoneModel = VerifyPhoneModel.fromJson(value.data);
-      if (verifyPhoneModel!.message == "Account Created Successfully") {
-        SignUpViewCubit.getObject(context).firestoreCreateUSer(
-          name: fullName,
-          phone: phoneNumber,
-        );
-      }
       emit(VerifyPhoneSuccessState());
     }).catchError((error) {
       if (error is DioException) {

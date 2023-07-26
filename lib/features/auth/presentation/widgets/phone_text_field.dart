@@ -30,7 +30,7 @@ class PhoneTextField extends StatelessWidget {
       controller: phoneController,
       focusNode: phonePassFocusNode,
       textCapitalization: TextCapitalization.none,
-      keyboardType: TextInputType.phone,
+      keyboardType: TextInputType.number,
       prefixIcon: Container(
         padding: const EdgeInsets.all(8.0),
         child: InkWell(

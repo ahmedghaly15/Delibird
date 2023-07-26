@@ -53,7 +53,7 @@ class TallWhiteBackground extends StatelessWidget {
                       children: <Widget>[
                         const OrDivider(),
                         SizedBox(width: SizeConfig.screenWidth! * 0.02),
-                        const Text("OR", style: AppTextStyles.OrStyle),
+                        const Text("OR", style: AppTextStyles.orStyle),
                         SizedBox(width: SizeConfig.screenWidth! * 0.02),
                         const OrDivider(),
                       ],

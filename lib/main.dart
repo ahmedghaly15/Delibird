@@ -45,8 +45,7 @@ class DelibirdApp extends StatelessWidget {
    */
 
   // TODO: remember to look at Responsive Class on Zahraa's GitHub
-  // TODO: Login with email and password & verify with phone number when the user creating a new account
-
+  // TODO: use flutter_staggered_grid_view in Home for customized grid view
   /*
   
 

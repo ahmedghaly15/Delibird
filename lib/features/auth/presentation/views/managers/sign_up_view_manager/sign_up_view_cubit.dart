@@ -36,7 +36,7 @@ class SignUpViewCubit extends Cubit<SignUpViewStates> {
       context: context,
     )
         .then((value) {
-      firestoreCreateUSer(
+      firestoreCreateUser(
         name: username,
         email: email,
         phone: phone,
@@ -52,7 +52,7 @@ class SignUpViewCubit extends Cubit<SignUpViewStates> {
     });
   }
 
-  void firestoreCreateUSer({
+  void firestoreCreateUser({
     String? name,
     String? email,
     String? phone,
