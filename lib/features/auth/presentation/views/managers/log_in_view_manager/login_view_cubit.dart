@@ -40,17 +40,15 @@ class LoginViewCubit extends Cubit<LoginViewStates> {
     });
   }
 
-  void Function()? signInWithGoogle({required BuildContext context}) {
+  signInWithGoogle() {
     emit(SignInWithGoogleLoadingState());
     loginViewRepo.signInWithGoogle().then((value) {
       emit(SignInWithGoogleSuccessState(value.user!.uid));
       CacheHelper.saveData(key: 'uId', value: value.user!.uid);
-      DelibirdAppCubit.getObject(context).getUserData(value.user!.uid);
+      // DelibirdAppCubit.getObject(context).getUserData(value.user!.uid);
     }).catchError((error) {
       emit(SignInWithGoogleErrorState(error.toString()));
     });
-
-    return null;
   }
 
   void switchPassVisibility() {

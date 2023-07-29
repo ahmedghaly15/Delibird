@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:country_picker/country_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexo_app/core/network/local/cache_helper.dart';
 
 import '../../../../../../core/models/verify_phone_model.dart';
 import '../../../../domain/log_in_with_phone_repo.dart';
@@ -41,6 +44,13 @@ class LoginWithPhoneCubit extends Cubit<LoginWithPhoneStates> {
   //   });
   // }
 
+  final Random random = Random();
+
+  // Format the random number as a 6-digit string
+  String generateFormattedUserID() {
+    return random.toString().padLeft(6, '0');
+  }
+
   void verifyPhoneNumber({
     required String fullName,
     required String phoneNumber,
@@ -53,7 +63,9 @@ class LoginWithPhoneCubit extends Cubit<LoginWithPhoneStates> {
       phoneNumber: phoneNumber,
     )
         .then((value) {
+      CacheHelper.saveData(key: 'uId', value: generateFormattedUserID());
       verifyPhoneModel = VerifyPhoneModel.fromJson(value.data);
+
       emit(VerifyPhoneSuccessState());
     }).catchError((error) {
       if (error is DioException) {

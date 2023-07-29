@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexo_app/core/utils/service_locator.dart';
 import 'package:nexo_app/features/auth/presentation/views/managers/sign_up_view_manager/sign_up_view_cubit.dart';
 
+import '../../../../core/utils/helper.dart';
 import '../widgets/sign_up_view_body.dart';
 
 class SignUpView extends StatelessWidget {
@@ -16,7 +17,7 @@ class SignUpView extends StatelessWidget {
       create: (context) => serviceLocator.get<SignUpViewCubit>(),
       child: Scaffold(
         body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () => Helper.unFocus(context),
           child: const SignUpViewBody(),
         ),
       ),

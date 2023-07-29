@@ -4,8 +4,8 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:nexo_app/core/global/app_navigator.dart';
 import 'package:nexo_app/core/widgets/custom_button.dart';
 
-import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_text_styles.dart';
+import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../views/manager/get_help_cubit.dart';
 import 'help_data_item.dart';
@@ -22,16 +22,7 @@ class GetHelpViewBody extends StatelessWidget {
           height: SizeConfig.screenHeight,
           width: SizeConfig.screenWidth,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.kVerifyColor.withOpacity(0.85),
-                AppColors.kVerifyColor.withOpacity(0.0),
-                Colors.white,
-              ],
-              stops: const [0.1, 0.4, 0.0],
-            ),
+            gradient: Helper.buildCustomLinearGradient(),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

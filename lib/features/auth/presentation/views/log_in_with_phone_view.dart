@@ -5,6 +5,8 @@ import 'package:nexo_app/features/auth/presentation/views/managers/log_in_with_p
 
 import 'package:nexo_app/features/auth/presentation/widgets/log_in_with_phone_view_body.dart';
 
+import '../../../../core/utils/helper.dart';
+
 class LoginWithPhoneView extends StatelessWidget {
   const LoginWithPhoneView({Key? key}) : super(key: key);
 
@@ -13,7 +15,7 @@ class LoginWithPhoneView extends StatelessWidget {
     return BlocProvider(
       create: (context) => serviceLocator.get<LoginWithPhoneCubit>(),
       child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () => Helper.unFocus(context),
         child: const Scaffold(
           body: LoginWithPhoneViewBody(),
         ),

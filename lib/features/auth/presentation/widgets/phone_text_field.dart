@@ -65,7 +65,7 @@ class PhoneTextField extends StatelessWidget {
             );
           },
           child: Container(
-            padding: const EdgeInsets.only(top: 12),
+            padding: const EdgeInsets.only(top: 9),
             child: Text(
               "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
               style: AppTextStyles.hintStyle,

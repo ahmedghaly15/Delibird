@@ -19,6 +19,10 @@ class CustomTextFormField extends StatelessWidget {
     this.onEditingComplete,
     this.onChanged,
     this.prefixIcon,
+    this.height,
+    this.width,
+    this.contentPadding,
+    this.boxShadow,
   }) : super(key: key);
 
   final FocusNode? focusNode;
@@ -34,22 +38,27 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String)? onSubmit;
   final void Function()? onEditingComplete;
   final void Function(String)? onChanged;
+  final double? height;
+  final double? width;
+  final EdgeInsetsGeometry? contentPadding;
+  final BoxShadow? boxShadow;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight! * 0.05,
-      width: SizeConfig.screenWidth! * 0.65,
+      height: height ?? SizeConfig.screenHeight! * 0.05,
+      width: width ?? SizeConfig.screenWidth! * 0.65,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
-          BoxShadow(
-            color: AppColors.kShadowColor,
-            blurRadius: 8,
-            spreadRadius: 2,
-            offset: const Offset(8, 4),
-          ),
+          boxShadow ??
+              BoxShadow(
+                color: AppColors.kShadowColor,
+                blurRadius: 8,
+                spreadRadius: 2,
+                offset: const Offset(8, 4),
+              ),
         ],
       ),
       child: TextFormField(
@@ -61,7 +70,8 @@ class CustomTextFormField extends StatelessWidget {
           prefixIcon: prefixIcon,
           hintText: hint,
           hintStyle: hintStyle,
-          contentPadding: const EdgeInsets.all(16),
+          contentPadding: contentPadding ??
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           enabledBorder: buildOutlineInputBorder(Colors.white, 0),
           focusedBorder: buildOutlineInputBorder(AppColors.kPrimaryColor, 2),
           errorBorder: buildOutlineInputBorder(Colors.white, 0),

@@ -74,9 +74,7 @@ class TallWhiteBackground extends StatelessWidget {
                         const SocialAuthIcon(image: AppAssets.ios),
                         SocialAuthIcon(
                           image: AppAssets.googleIcon,
-                          onTap: loginViewCubit!.signInWithGoogle(
-                            context: context,
-                          ),
+                          onTap: loginViewCubit!.signInWithGoogle,
                         ),
                       ],
                     ),

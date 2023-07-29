@@ -6,7 +6,7 @@ class AppNavigator {
     required Widget Function() screen,
     Transition? transition = Transition.rightToLeft,
     Duration? duration = const Duration(milliseconds: 400),
-    Curve? curve = Curves.linear,
+    Curve? curve = Curves.fastEaseInToSlowEaseOut,
     dynamic arguments,
   }) {
     Get.to(
@@ -26,7 +26,7 @@ class AppNavigator {
     required Widget Function() screen,
     Transition? transition = Transition.rightToLeftWithFade,
     Duration? duration = const Duration(milliseconds: 400),
-    Curve? curve = Curves.linear,
+    Curve? curve = Curves.fastEaseInToSlowEaseOut,
     dynamic arguments,
   }) {
     Get.off(
@@ -42,7 +42,7 @@ class AppNavigator {
     required Widget Function() screen,
     Transition? transition = Transition.rightToLeft,
     Duration? duration = const Duration(milliseconds: 400),
-    Curve? curve = Curves.linear,
+    Curve? curve = Curves.fastEaseInToSlowEaseOut,
     dynamic arguments,
   }) {
     Get.offAll(

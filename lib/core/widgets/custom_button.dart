@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nexo_app/core/global/app_colors.dart';
+import 'package:nexo_app/core/utils/helper.dart';
 
 import '/core/global/app_text_styles.dart';
 import '/core/utils/size_config.dart';
@@ -35,13 +36,7 @@ class CustomButton extends StatelessWidget {
           width: width ?? SizeConfig.screenWidth! * 0.65,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.0),
-            gradient: LinearGradient(
-              colors: [
-                const Color(0xFF0062BD),
-                const Color(0xFF0062BD).withOpacity(0.5),
-                const Color(0xFF0062BD).withOpacity(0.27),
-              ],
-            ),
+            gradient: Helper.primaryColorLinearGradient(),
           ),
           child: isLoginWithPhone
               ? Padding(

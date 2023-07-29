@@ -140,7 +140,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void login(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      FocusScope.of(context).unfocus();
+      Helper.unFocus(context);
       widget.cubit.userLogin(
         context: context,
         email: emailController.text,

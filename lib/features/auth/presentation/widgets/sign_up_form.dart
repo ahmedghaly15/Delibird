@@ -207,7 +207,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   void signUp(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      FocusScope.of(context).unfocus();
+      Helper.unFocus(context);
       widget.cubit.userSignUp(
         context: context,
         email: emailController.text,

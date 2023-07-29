@@ -115,7 +115,7 @@ class _LoginWithPhoneFormState extends State<LoginWithPhoneForm> {
 
   void loginWithPhone(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      FocusScope.of(context).unfocus();
+      Helper.unFocus(context);
 
       widget.cubit.verifyPhoneNumber(
         context: context,

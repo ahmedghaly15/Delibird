@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nexo_app/core/global/app_text_styles.dart';
 
+import '../global/app_colors.dart';
 import '../models/user_model.dart';
 
 enum SnackBarStates { success, error }
@@ -10,6 +12,18 @@ class Helper {
   static String? uId;
 
   static UserModel? model;
+
+  static SystemUiOverlayStyle setTheSystemUIOverlayStyle({
+    Color systemNavigationBarColor = Colors.transparent,
+    Color statusBarColor = Colors.transparent,
+    Brightness statusBarBrightness = Brightness.light,
+  }) {
+    return SystemUiOverlayStyle(
+      systemNavigationBarColor: systemNavigationBarColor,
+      statusBarColor: statusBarColor,
+      statusBarBrightness: statusBarBrightness,
+    );
+  }
 
   static void buildSnackBar({
     required BuildContext context,
@@ -161,5 +175,33 @@ class Helper {
         state: SnackBarStates.error,
       );
     }
+  }
+
+  static LinearGradient buildCustomLinearGradient() {
+    return LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        AppColors.kVerifyColor.withOpacity(0.8),
+        AppColors.kVerifyColor.withOpacity(0.7),
+        AppColors.kVerifyColor.withOpacity(0.0),
+        Colors.white,
+      ],
+      stops: const [0.05, 0.15, 0.6, 0],
+    );
+  }
+
+  static LinearGradient primaryColorLinearGradient() {
+    return LinearGradient(
+      colors: [
+        const Color(0xFF0062BD),
+        const Color(0xFF0062BD).withOpacity(0.5),
+        const Color(0xFF0062BD).withOpacity(0.27),
+      ],
+    );
+  }
+
+  static unFocus(context) {
+    FocusScope.of(context).unfocus();
   }
 }
