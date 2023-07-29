@@ -9,6 +9,7 @@ import 'core/global/app_theme.dart';
 import 'core/network/local/cache_helper.dart';
 import 'core/network/remote/dio_helper.dart';
 import 'core/utils/firebase_options.dart';
+import 'core/utils/helper.dart';
 import 'core/utils/my_bloc_observer.dart';
 import 'core/utils/service_locator.dart';
 import 'core/utils/size_config.dart';
@@ -37,31 +38,16 @@ Future<void> main() async {
 class DelibirdApp extends StatelessWidget {
   const DelibirdApp({Key? key}) : super(key: key);
 
-  /*
-  
-  To Sign Out Use This:
-
-  => await FirebaseAuth.instance.signOut();
-  
-   */
-
   // TODO: remember to look at Responsive Class on Zahraa's GitHub
-  // TODO: use flutter_staggered_grid_view in Home for customized grid view
-  /*
-  
-
-  Phone Authentication errors:
-
-  invalid-phone-number 
-  phone-number-already-exists
-  
-   */
+  // TODO: use Hero animation when you navigate to ProductDetailsView
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return BlocProvider(
-      create: (context) => serviceLocator.get<DelibirdAppCubit>(),
+      create: (context) => serviceLocator.get<DelibirdAppCubit>()
+        ..getUserData(Helper.uId)
+        ..getProducts(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Delibird-App',
@@ -74,11 +60,5 @@ class DelibirdApp extends StatelessWidget {
 
 void setSystemUIOverlayStyle() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.transparent,
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light,
-    ),
-  );
+  SystemChrome.setSystemUIOverlayStyle(Helper.setTheSystemUIOverlayStyle());
 }
