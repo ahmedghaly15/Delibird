@@ -21,7 +21,7 @@ class LoginWithPhoneContainer extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 25),
         padding: const EdgeInsets.symmetric(horizontal: 32.0),
-        height: SizeConfig.screenHeight! * 0.35,
+        height: SizeConfig.screenHeight! * 0.4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(40.0),
           color: Colors.white,

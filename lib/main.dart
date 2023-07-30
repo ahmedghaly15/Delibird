@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:nexo_app/features/layout/presentation/views/manager/delibird_app_cubit.dart';
 
 import 'core/global/app_theme.dart';
 import 'core/network/local/cache_helper.dart';
@@ -13,6 +12,7 @@ import 'core/utils/helper.dart';
 import 'core/utils/my_bloc_observer.dart';
 import 'core/utils/service_locator.dart';
 import 'core/utils/size_config.dart';
+import 'features/layout/presentation/views/manager/delibird_app_cubit.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 
 Future<void> main() async {
@@ -37,10 +37,6 @@ Future<void> main() async {
 
 class DelibirdApp extends StatelessWidget {
   const DelibirdApp({Key? key}) : super(key: key);
-
-  // TODO: remember to look at Responsive Class on Zahraa's GitHub
-  // TODO: use Hero animation when you navigate to ProductDetailsView
-  // TODO: add TextButton (Verify) in LoginWithPhone View to naviagteTo VerifyView
 
   @override
   Widget build(BuildContext context) {

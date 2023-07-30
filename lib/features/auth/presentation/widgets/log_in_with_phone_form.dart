@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:nexo_app/core/widgets/custom_circular_progress_indicator.dart';
 
 import '../../../../core/global/app_colors.dart';
+import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
+import '../../../phone_verification/presentation/views/verify_view.dart';
 import '../views/managers/log_in_with_phone_manager/login_with_phone_cubit.dart';
 import '../../../../core/widgets/custom_divider.dart';
 import 'phone_text_field.dart';
@@ -102,6 +105,13 @@ class _LoginWithPhoneFormState extends State<LoginWithPhoneForm> {
               text: "Login",
             ),
             fallback: (context) => const CustomCircularProgressIndicator(),
+          ),
+          SizedBox(height: SizeConfig.screenHeight! * 0.025),
+          CustomTextButton(
+            onPressed: () => AppNavigator.navigateTo(
+              screen: () => const VerifyView(),
+            ),
+            text: "Verify",
           ),
         ],
       ),
