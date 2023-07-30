@@ -1,4 +1,4 @@
-# Delibird
+# Delibird-App
 
 Delibird is a powerful and intuitive Flutter application designed exclusively for Acer enthusiasts. With its sleek user interface, advanced features, and smooth performance, Delibird offers a seamless shopping experience for Acer products.
 
