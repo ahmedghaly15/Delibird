@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nexo_app/core/global/app_text_styles.dart';
 
 import '../global/app_colors.dart';
 import '../models/user_model.dart';
+import '/core/global/app_text_styles.dart';
 
 enum SnackBarStates { success, error }
 

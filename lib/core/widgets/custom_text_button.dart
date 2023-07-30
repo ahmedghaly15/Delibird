@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nexo_app/core/global/app_colors.dart';
-import 'package:nexo_app/core/global/app_text_styles.dart';
+
+import '/core/global/app_colors.dart';
+import '/core/global/app_text_styles.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({

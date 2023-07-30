@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nexo_app/core/global/app_colors.dart';
-import 'package:nexo_app/core/utils/helper.dart';
 
+import '/core/global/app_colors.dart';
 import '/core/global/app_text_styles.dart';
+import '/core/utils/helper.dart';
 import '/core/utils/size_config.dart';
 
 class CustomButton extends StatelessWidget {

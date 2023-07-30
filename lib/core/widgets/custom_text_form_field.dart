@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nexo_app/core/global/app_colors.dart';
-import 'package:nexo_app/core/global/app_text_styles.dart';
-import 'package:nexo_app/core/utils/size_config.dart';
+
+import '/core/global/app_colors.dart';
+import '/core/global/app_text_styles.dart';
+import '/core/utils/size_config.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({

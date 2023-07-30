@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nexo_app/core/global/app_colors.dart';
+
+import '/core/global/app_colors.dart';
 
 class AppTextStyles {
   static const TextStyle welcomeStyle = TextStyle(
