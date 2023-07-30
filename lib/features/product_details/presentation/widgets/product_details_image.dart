@@ -5,7 +5,12 @@ import '../../../../core/global/app_colors.dart';
 import '../../../../core/utils/size_config.dart';
 
 class ProductDetailsImage extends StatelessWidget {
-  const ProductDetailsImage({Key? key}) : super(key: key);
+  const ProductDetailsImage(
+      {Key? key, required this.image, required this.productId})
+      : super(key: key);
+
+  final String image;
+  final int productId;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +37,14 @@ class ProductDetailsImage extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
-          child: CachedNetworkImage(
-            height: SizeConfig.screenHeight! * 0.3,
-            width: SizeConfig.screenWidth! * 0.9,
-            imageUrl:
-                'https://m.media-amazon.com/images/I/7183SjkrSnL._AC_SL1500_.jpg',
-            fit: BoxFit.cover,
+          child: Hero(
+            tag: productId,
+            child: CachedNetworkImage(
+              height: SizeConfig.screenHeight! * 0.3,
+              width: SizeConfig.screenWidth! * 0.9,
+              imageUrl: image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

@@ -3,9 +3,11 @@ import 'package:nexo_app/core/global/app_colors.dart';
 import 'package:nexo_app/core/global/app_text_styles.dart';
 import 'package:nexo_app/features/product_details/presentation/widgets/tabs_content.dart';
 
+import '../../../../core/models/products_model.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_divider.dart';
+import '../../../layout/presentation/views/manager/delibird_app_cubit.dart';
 import 'get_back_button.dart';
 import 'list_of_products.dart';
 import 'price_and_add_to_cart.dart';
@@ -14,7 +16,10 @@ import 'tab_bar_tabs.dart';
 import 'view_acer_store_button.dart';
 
 class ProductDetailsViewBody extends StatefulWidget {
-  const ProductDetailsViewBody({Key? key}) : super(key: key);
+  const ProductDetailsViewBody({Key? key, required this.product})
+      : super(key: key);
+
+  final Product product;
 
   @override
   State<ProductDetailsViewBody> createState() => _ProductDetailsViewBodyState();
@@ -42,25 +47,32 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody>
           children: <Widget>[
             const GetBackButton(),
             SizedBox(height: SizeConfig.screenHeight! * 0.025),
-            const Text(
-              "Predator Helios 300",
+            Text(
+              widget.product.name!,
               style: AppTextStyles.productDetailsName,
             ),
             SizedBox(height: SizeConfig.screenHeight! * 0.008),
             Text(
-              "Type: Gaming Laptop",
+              widget.product.type!,
               style: AppTextStyles.orStyle.copyWith(
                 color: Colors.white,
               ),
             ),
             SizedBox(height: SizeConfig.screenHeight! * 0.022),
-            const ProductDetailsImage(),
+            ProductDetailsImage(
+              image: widget.product.image!,
+              productId: widget.product.id!,
+            ),
             SizedBox(height: SizeConfig.screenHeight! * 0.025),
-            const ListOfProducts(),
+            ListOfProducts(
+              products: DelibirdAppCubit.getObject(context).products,
+            ),
             SizedBox(height: SizeConfig.screenHeight! * 0.022),
             const ViewAcerStoreButton(),
             SizedBox(height: SizeConfig.screenHeight! * 0.03),
-            const PriceAndAddToCartButton(),
+            PriceAndAddToCartButton(
+              productPrice: widget.product.price!,
+            ),
             SizedBox(height: SizeConfig.screenHeight! * 0.03),
             Align(
               alignment: Alignment.center,
@@ -72,7 +84,10 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody>
             ),
             SizedBox(height: SizeConfig.screenHeight! * 0.03),
             TabBarTabs(tabController: tabController),
-            TabsContent(tabController: tabController),
+            TabsContent(
+              tabController: tabController,
+              description: widget.product.description!,
+            ),
           ],
         ),
       ),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/models/products_model.dart';
 import '../../../../core/utils/size_config.dart';
 import 'list_product_item.dart';
 
 class ListOfProducts extends StatelessWidget {
-  const ListOfProducts({Key? key}) : super(key: key);
+  const ListOfProducts({Key? key, required this.products}) : super(key: key);
+
+  final List<Product> products;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +24,10 @@ class ListOfProducts extends StatelessWidget {
           ),
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
-          itemCount: 6,
-          itemBuilder: (context, index) => const ListProductItem(),
+          itemCount: products.length,
+          itemBuilder: (context, index) => ListProductItem(
+            productImage: products[index].image!,
+          ),
           separatorBuilder: (context, index) => SizedBox(
             width: SizeConfig.screenWidth! * 0.05,
           ),

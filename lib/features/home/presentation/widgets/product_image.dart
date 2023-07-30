@@ -38,11 +38,14 @@ class ProductImage extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
-            child: CachedNetworkImage(
-              imageUrl: product.image!,
-              height: SizeConfig.screenHeight! * 0.145,
-              width: SizeConfig.screenWidth! * 0.43,
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: product.id!,
+              child: CachedNetworkImage(
+                imageUrl: product.image!,
+                height: SizeConfig.screenHeight! * 0.145,
+                width: SizeConfig.screenWidth! * 0.43,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           GestureDetector(

@@ -5,9 +5,11 @@ class TabsContent extends StatelessWidget {
   const TabsContent({
     Key? key,
     required this.tabController,
+    required this.description,
   }) : super(key: key);
 
   final TabController tabController;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class TabsContent extends StatelessWidget {
         controller: tabController,
         children: <Widget>[
           Text(
-            "Sint dolor aute deserunt laboris irure fugiat reprehenderit nulla mollit tempor. Labore culpa enim mollit occaecat sint excepteur incididunt est velit occaecat elit Lorem exercitation cupidatat. Do exercitation ullamco sit esse laboris quis irure aliquip minim reprehenderit magna et enim duis. Elit officia laborum reprehenderit cupidatat ad consectetur enim duis excepteur cillum dolore sunt. Ullamco esse magna magna reprehenderit incididunt fugiat reprehenderit. Id enim sunt sunt excepteur esse sunt ut ea.",
+            description,
             style: AppTextStyles.hintStyle.copyWith(
               fontSize: 16,
             ),

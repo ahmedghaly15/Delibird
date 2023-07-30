@@ -6,7 +6,10 @@ import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class PriceAndAddToCartButton extends StatelessWidget {
-  const PriceAndAddToCartButton({Key? key}) : super(key: key);
+  const PriceAndAddToCartButton({Key? key, required this.productPrice})
+      : super(key: key);
+
+  final String productPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class PriceAndAddToCartButton extends StatelessWidget {
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.008),
               Text(
-                "\$3500 EGP",
+                "\$$productPrice EGP",
                 style: AppTextStyles.snackBarTitleTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
                   color: Colors.black,

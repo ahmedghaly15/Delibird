@@ -37,7 +37,9 @@ class FirstTabContent extends StatelessWidget {
                   index: index,
                   product: cubit.products[index],
                   onTap: () => AppNavigator.navigateTo(
-                    screen: () => const ProductDetailsView(),
+                    screen: () => ProductDetailsView(
+                      product: cubit.products[index],
+                    ),
                   ),
                 ),
               ),
