@@ -3,8 +3,8 @@ import 'package:nexo_app/features/layout/presentation/views/manager/delibird_app
 
 import 'first_tab_content.dart';
 
-class TabsContent extends StatelessWidget {
-  const TabsContent({
+class HomeTabsContent extends StatelessWidget {
+  const HomeTabsContent({
     Key? key,
     required this.tabController,
     required this.cubit,

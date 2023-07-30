@@ -187,7 +187,7 @@ class Helper {
         AppColors.kVerifyColor.withOpacity(0.0),
         Colors.white,
       ],
-      stops: const [0.05, 0.15, 0.6, 0],
+      stops: const [0.05, 0.15, 0.47, 0],
     );
   }
 

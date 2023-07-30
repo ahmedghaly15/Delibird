@@ -45,7 +45,6 @@ class CustomTab extends StatelessWidget {
               width: SizeConfig.screenHeight! * 0.05,
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                // shape: BoxShape.circle,
                 borderRadius: BorderRadius.circular(30.0),
                 color: Colors.white,
                 boxShadow: [

@@ -11,45 +11,50 @@ class ProductItem extends StatelessWidget {
     Key? key,
     required this.index,
     required this.product,
+    required this.onTap,
   }) : super(key: key);
 
   final int index;
   final Product product;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 239,
-      width: 168,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(2, 2),
-            color: AppColors.kShadowColor,
-            blurRadius: 8,
-            spreadRadius: 5,
-          ),
-        ],
-      ),
-      child: Stack(
-        children: <Widget>[
-          ProductImage(
-            product: product,
-            onPressed: () {},
-          ),
-          Positioned(
-            left: 0,
-            bottom: 0,
-            child: ProductInfo(product: product),
-          ),
-          const Positioned(
-            bottom: 0,
-            right: 0,
-            child: AddToCartIconButton(),
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 239,
+        width: 168,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(2, 2),
+              color: AppColors.kShadowColor,
+              blurRadius: 8,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        child: Stack(
+          children: <Widget>[
+            ProductImage(
+              product: product,
+              onPressed: () {},
+            ),
+            Positioned(
+              left: 0,
+              bottom: 0,
+              child: ProductInfo(product: product),
+            ),
+            const Positioned(
+              bottom: 0,
+              right: 0,
+              child: AddToCartIconButton(),
+            ),
+          ],
+        ),
       ),
     );
   }

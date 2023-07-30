@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/global/app_assets.dart';
+import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_icon_button.dart';
@@ -29,6 +30,8 @@ class BackgroundImageAndHelpIcon extends StatelessWidget {
           top: 50,
           child: CustomIconButton(
             icon: Icons.help,
+            iconColor: AppColors.kDefaultIconButtonColor,
+            iconSize: 25,
             onTap: () => AppNavigator.navigateTo(
               screen: () => const GetHelpView(),
             ),

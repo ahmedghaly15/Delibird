@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nexo_app/features/auth/presentation/widgets/phone_text_field.dart';
 
+import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/helper.dart';
@@ -15,7 +16,7 @@ import '../../../../core/widgets/custom_text_form_field.dart';
 import '../views/log_in_view.dart';
 import '../views/managers/sign_up_view_manager/sign_up_view_cubit.dart';
 
-import 'custom_divider.dart';
+import '../../../../core/widgets/custom_divider.dart';
 import 'visibility_icon_button.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -68,7 +69,11 @@ class _SignUpFormState extends State<SignUpForm> {
             style: AppTextStyles.welcomeStyle,
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.01),
-          const CustomDivider(),
+          CustomDivider(
+            height: SizeConfig.screenHeight! * 0.003,
+            width: SizeConfig.screenHeight! * 0.15,
+            color: AppColors.kDividerColor,
+          ),
           SizedBox(height: SizeConfig.screenHeight! * 0.045),
           CustomTextFormField(
             hint: "Enter your Full Name",
@@ -157,7 +162,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ConditionalBuilder(
             condition: widget.state is! SignUpLoadingState,
             builder: (context) => CustomButton(
-              isLoginWithPhone: false,
+              hasIcon: false,
               onPressed: () => signUp(context),
               text: "Sign up",
             ),

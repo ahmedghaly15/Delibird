@@ -2,7 +2,9 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:nexo_app/core/global/app_navigator.dart';
 import 'package:nexo_app/core/widgets/custom_circular_progress_indicator.dart';
+import 'package:nexo_app/features/product_details/presentation/view/product_details_view.dart';
 
 import '../../../layout/presentation/views/manager/delibird_app_cubit.dart';
 import 'product_item.dart';
@@ -20,7 +22,9 @@ class FirstTabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConditionalBuilder(
-      condition: cubit.products.isNotEmpty && state is! GetProductsLoadingState,
+      // Another correct condition
+      condition: cubit.products.isNotEmpty && cubit.productsModel != null,
+      // condition: cubit.products.isNotEmpty && state is! GetProductsLoadingState,
       builder: (context) => GridView.builder(
         itemBuilder: (context, index) {
           return AnimationConfiguration.staggeredGrid(
@@ -32,6 +36,9 @@ class FirstTabContent extends StatelessWidget {
                 child: ProductItem(
                   index: index,
                   product: cubit.products[index],
+                  onTap: () => AppNavigator.navigateTo(
+                    screen: () => const ProductDetailsView(),
+                  ),
                 ),
               ),
             ),

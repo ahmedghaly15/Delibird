@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:country_picker/country_picker.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexo_app/core/network/local/cache_helper.dart';
@@ -68,9 +67,6 @@ class LoginWithPhoneCubit extends Cubit<LoginWithPhoneStates> {
 
       emit(VerifyPhoneSuccessState());
     }).catchError((error) {
-      if (error is DioException) {
-        // TODO: Handle Errors like in BookHive
-      }
       debugPrint(error.toString());
       emit(VerifyPhoneErrorState(error.toString()));
     });

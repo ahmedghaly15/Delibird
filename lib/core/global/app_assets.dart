@@ -8,4 +8,5 @@ class AppAssets {
   static const String mask = 'assets/images/mask.png';
   static const String razerLogo = 'assets/images/Razer-Logo.png';
   static const String vectorTrophy = 'assets/images/vector-trophy.png';
+  static const String acerLogo = 'assets/images/acerLogo.png';
 }

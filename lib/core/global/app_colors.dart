@@ -10,6 +10,7 @@ class AppColors {
   static Color kShadowColor = const Color(0xFF000000).withOpacity(0.25);
   static const Color kDefaultIconButtonColor = Color(0xFFB1B1B1);
   static Color kGraySplashColor = Colors.grey.withOpacity(0.1);
+  static const Color kAcerLogoColor = Color(0xFFF3F3F3);
   // Verify Colors
   static const Color kVerifyColor = Color(0xFF0062BD);
 }

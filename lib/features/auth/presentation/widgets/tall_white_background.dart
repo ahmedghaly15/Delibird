@@ -63,7 +63,7 @@ class TallWhiteBackground extends StatelessWidget {
                       onPressed: () => AppNavigator.navigateTo(
                         screen: () => const LoginWithPhoneView(),
                       ),
-                      isLoginWithPhone: true,
+                      hasIcon: true,
                       text: "Login With Phone",
                     ),
                     SizedBox(height: SizeConfig.screenHeight! * 0.03),

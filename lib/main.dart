@@ -40,6 +40,7 @@ class DelibirdApp extends StatelessWidget {
 
   // TODO: remember to look at Responsive Class on Zahraa's GitHub
   // TODO: use Hero animation when you navigate to ProductDetailsView
+  // TODO: add TextButton (Verify) in LoginWithPhone View to naviagteTo VerifyView
 
   @override
   Widget build(BuildContext context) {

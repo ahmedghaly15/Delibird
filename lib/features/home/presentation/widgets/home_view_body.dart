@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nexo_app/core/global/app_assets.dart';
-import 'package:nexo_app/features/layout/presentation/views/manager/delibird_app_cubit.dart';
 
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
+import '/core/global/app_assets.dart';
+import '/features/layout/presentation/views/manager/delibird_app_cubit.dart';
 import 'search_text_form_field.dart';
-import 'tab_bar_tabs.dart';
-import 'tabs_content.dart';
+import 'home_tab_bar_tabs.dart';
+import 'home_tabs_content.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({
@@ -24,11 +24,6 @@ class HomeViewBody extends StatefulWidget {
 
 class _HomeViewBodyState extends State<HomeViewBody>
     with TickerProviderStateMixin {
-  /*
-  TODO: 
-        when using ConditionalBuilder in getting products make 
-        the condition: state is GetProductsLoadingState && productsModel != null
-   */
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
@@ -57,8 +52,8 @@ class _HomeViewBodyState extends State<HomeViewBody>
             ),
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.02),
-          TabBarTabs(tabController: tabController),
-          TabsContent(
+          HomeTabBarTabs(tabController: tabController),
+          HomeTabsContent(
             tabController: tabController,
             cubit: widget.cubit,
             state: widget.state,

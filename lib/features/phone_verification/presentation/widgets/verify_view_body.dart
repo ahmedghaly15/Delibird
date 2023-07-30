@@ -150,7 +150,7 @@ class _VerifyViewBodyState extends State<VerifyViewBody> {
             ),
             SizedBox(height: SizeConfig.screenHeight! * 0.08),
             CustomButton(
-              isLoginWithPhone: false,
+              hasIcon: false,
               height: SizeConfig.screenHeight! * 0.065,
               width: SizeConfig.screenWidth! * 0.75,
               onPressed: () {

@@ -7,6 +7,12 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle productDetailsName = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
   static const TextStyle buttonStyle = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,

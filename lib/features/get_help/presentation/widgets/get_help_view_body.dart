@@ -53,7 +53,7 @@ class GetHelpViewBody extends StatelessWidget {
               ),
               CustomButton(
                 onPressed: () => AppNavigator.getBack(),
-                isLoginWithPhone: false,
+                hasIcon: false,
                 text: "Continue",
               ),
               Expanded(

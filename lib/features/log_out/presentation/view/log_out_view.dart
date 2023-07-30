@@ -10,7 +10,7 @@ class LogOutView extends StatelessWidget {
     return Center(
       child: CustomButton(
         onPressed: DelibirdAppCubit.getObject(context).signOut,
-        isLoginWithPhone: false,
+        hasIcon: false,
         text: "Sign out",
       ),
     );

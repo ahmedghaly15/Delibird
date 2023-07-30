@@ -9,11 +9,12 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
     required this.onPressed,
-    required this.isLoginWithPhone,
+    required this.hasIcon,
     required this.text,
     this.textStyle = AppTextStyles.buttonStyle,
     this.height,
     this.width,
+    this.radius,
   }) : super(key: key);
 
   final void Function() onPressed;
@@ -21,7 +22,8 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? height;
   final double? width;
-  final bool isLoginWithPhone;
+  final double? radius;
+  final bool hasIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +31,16 @@ class CustomButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         splashColor: AppColors.kButtonSplashColor,
-        borderRadius: BorderRadius.circular(50.0),
+        borderRadius: BorderRadius.circular(radius ?? 50.0),
         onTap: onPressed,
         child: Container(
           height: height ?? SizeConfig.screenHeight! * 0.048,
           width: width ?? SizeConfig.screenWidth! * 0.65,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50.0),
+            borderRadius: BorderRadius.circular(radius ?? 50.0),
             gradient: Helper.primaryColorLinearGradient(),
           ),
-          child: isLoginWithPhone
+          child: hasIcon
               ? Padding(
                   padding: const EdgeInsets.only(left: 16.0),
                   child: Row(

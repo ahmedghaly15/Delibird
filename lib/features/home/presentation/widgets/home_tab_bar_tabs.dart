@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/global/app_assets.dart';
 import 'custom_tab.dart';
 
-class TabBarTabs extends StatefulWidget {
-  const TabBarTabs({
+class HomeTabBarTabs extends StatefulWidget {
+  const HomeTabBarTabs({
     Key? key,
     required this.tabController,
   }) : super(key: key);
@@ -12,10 +12,10 @@ class TabBarTabs extends StatefulWidget {
   final TabController tabController;
 
   @override
-  State<TabBarTabs> createState() => _TabBarTabsState();
+  State<HomeTabBarTabs> createState() => _HomeTabBarTabsState();
 }
 
-class _TabBarTabsState extends State<TabBarTabs> {
+class _HomeTabBarTabsState extends State<HomeTabBarTabs> {
   int currentIndex = 0;
 
   @override

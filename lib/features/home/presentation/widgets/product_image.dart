@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:nexo_app/core/utils/size_config.dart';
 
 import '../../../../core/global/app_colors.dart';
 import '../../../../core/models/products_model.dart';
@@ -17,8 +18,8 @@ class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 125,
-      width: 168,
+      height: SizeConfig.screenHeight! * 0.145,
+      width: SizeConfig.screenWidth! * 0.43,
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -39,8 +40,8 @@ class ProductImage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             child: CachedNetworkImage(
               imageUrl: product.image!,
-              height: 125,
-              width: 168,
+              height: SizeConfig.screenHeight! * 0.145,
+              width: SizeConfig.screenWidth! * 0.43,
               fit: BoxFit.cover,
             ),
           ),

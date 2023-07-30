@@ -3,6 +3,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nexo_app/core/widgets/custom_circular_progress_indicator.dart';
 
+import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/size_config.dart';
@@ -10,7 +11,7 @@ import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
 import '../views/managers/log_in_with_phone_manager/login_with_phone_cubit.dart';
-import 'custom_divider.dart';
+import '../../../../core/widgets/custom_divider.dart';
 import 'phone_text_field.dart';
 
 class LoginWithPhoneForm extends StatefulWidget {
@@ -56,7 +57,11 @@ class _LoginWithPhoneFormState extends State<LoginWithPhoneForm> {
             style: AppTextStyles.welcomeStyle,
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.01),
-          const CustomDivider(),
+          CustomDivider(
+            height: SizeConfig.screenHeight! * 0.003,
+            width: SizeConfig.screenHeight! * 0.15,
+            color: AppColors.kDividerColor,
+          ),
           SizedBox(height: SizeConfig.screenHeight! * 0.045),
           CustomTextFormField(
             hint: "Enter your Full Name",
@@ -92,7 +97,7 @@ class _LoginWithPhoneFormState extends State<LoginWithPhoneForm> {
           ConditionalBuilder(
             condition: widget.state is! VerifyPhoneLoadingState,
             builder: (context) => CustomButton(
-              isLoginWithPhone: false,
+              hasIcon: false,
               onPressed: () => loginWithPhone(context),
               text: "Login",
             ),

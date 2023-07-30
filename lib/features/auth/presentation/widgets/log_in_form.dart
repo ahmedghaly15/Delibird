@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/global/app_colors.dart';
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_text_styles.dart';
 import '../../../../core/utils/helper.dart';
@@ -12,7 +13,7 @@ import '../../../../core/widgets/custom_text_form_field.dart';
 import '../views/managers/log_in_view_manager/login_view_cubit.dart';
 import '../views/sign_up_view.dart';
 import '/features/auth/presentation/views/managers/log_in_view_manager/login_view_state.dart';
-import 'custom_divider.dart';
+import '../../../../core/widgets/custom_divider.dart';
 import 'visibility_icon_button.dart';
 
 class LoginForm extends StatefulWidget {
@@ -58,7 +59,11 @@ class _LoginFormState extends State<LoginForm> {
             style: AppTextStyles.welcomeStyle,
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.01),
-          const CustomDivider(),
+          CustomDivider(
+            height: SizeConfig.screenHeight! * 0.003,
+            width: SizeConfig.screenHeight! * 0.15,
+            color: AppColors.kDividerColor,
+          ),
           SizedBox(height: SizeConfig.screenHeight! * 0.045),
           CustomTextFormField(
             hint: "Enter your Email",
@@ -97,7 +102,7 @@ class _LoginFormState extends State<LoginForm> {
           ConditionalBuilder(
             condition: widget.state is! LoginLoadingState,
             builder: (context) => CustomButton(
-              isLoginWithPhone: false,
+              hasIcon: false,
               onPressed: () => login(context),
               text: "Login",
             ),
